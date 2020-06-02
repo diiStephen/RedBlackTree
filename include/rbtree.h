@@ -67,7 +67,11 @@ struct RBTreeNode* minimum(struct RBTreeNode *);
 /* Search tree for node with maximum key. */
 struct RBTreeNode* maximum(struct RBTreeNode *);
 
+/* Find predecessor node. */
+struct RBTreeNode* predecessor(int, struct RBTreeNode *);
 
+/* Find successor node. */ 
+struct RBTreeNode* successor(int, struct RBTreeNode *);
 
 
 #endif

@@ -135,7 +135,7 @@ is done by recursively following the right pointers of each node from the root.
 empty.
 **/
 struct RBTreeNode* maximum(struct RBTreeNode *root) {
-  if (root == NULL || root->right == NULL)
+  if (root == NULL || root->right == NULL) // Short circuting.
     return root;
   else
     maximum(root->right);
