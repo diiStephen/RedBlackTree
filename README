@@ -1,0 +1,6 @@
+An implementation of the Red-Black Tree data structure in C. The interface
+is designed to be simple to use and generic.
+
+1. Background
+
+The Red-Black Tree is a balanaced binary tree data structure. 
