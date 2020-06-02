@@ -39,7 +39,7 @@ void dest_rbtree_node(struct RBTreeNode *node) {
   }
 }
 
-struct RBTreeNode* init_rbtree(int k, void* d) {
+struct RBTreeNode* init_rbtree(int k, void *d) {
 
   /* Construct a new Red-Black tree by returning a root node. */
 
@@ -47,4 +47,42 @@ struct RBTreeNode* init_rbtree(int k, void* d) {
 
   return root;
 
+}
+
+/**
+Insert data into the red-black tree. Ordereding is
+given by the integer key associated with the satelite
+data.
+
+@param k Key associated with data. Used for searching, ordering, etc.
+@param data Data associated with the node. void* for generic data.
+@return Pointer to the new node inserted into the tree.
+**/
+struct RBTreeNode* insert(int k, void *data, struct RBTreeNode **root) {
+
+  struct RBTreeNode *newest = init_rbtree_node(NULL, NULL, NULL, k, data, BLACK);
+  struct RBTreeNode *walk = *root;
+  struct RBTreeNode *parent = NULL;
+
+  // Find the appropriate spot for the node.
+  while (walk != NULL) {
+    parent = walk;
+    if (k < walk->key) {
+      walk = walk->left;
+    } else {
+      walk = walk->right;
+    }
+  }
+  newest->parent = parent;
+
+  // Update pointers. 
+  if (parent == NULL) {
+    *root = newest; //Tree was empty.
+  } else if (k < parent->key) {
+    parent->left = newest;
+  } else {
+    parent->right = newest;
+  }
+
+  return newest;
 }

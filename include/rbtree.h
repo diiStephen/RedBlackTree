@@ -17,7 +17,7 @@
 		5. Compile and link as a shared object library, besides the test programs.
 
 		6. implementation should be modularized with the implementation hidden
-		   behind a public interface. 
+		   behind a public interface.
 */
 
 enum color {
@@ -49,7 +49,8 @@ void dest_rbtree_node(struct RBTreeNode *);
 /* Returns a pointer to a new RBTree node with NULL parent. */
 struct RBTreeNode* init_rbtree(int, void *);
 
-
+/* Insertion function. */
+struct RBTreeNode* insert(int, void*, struct RBTreeNode**);
 
 
 
