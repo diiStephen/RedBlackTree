@@ -31,6 +31,9 @@ void testOne() {
   insert(4, NULL, &root);
   insert(20, NULL, &root);
   insert(-4, NULL, &root);
+  insert(100, NULL, &root);
+  insert(101, NULL, &root);
+  insert(13, NULL, &root);
   printTree(root);
 
   struct RBTreeNode *result = search(10, root);
