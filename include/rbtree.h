@@ -66,6 +66,9 @@ void* delete(int, struct RBTreeNode *);
 /* Delete function - private. */
 void* delete_node(struct RBTreeNode **);
 
+/* Transplant utility function - private. */ 
+void transplant(struct RBTreeNode **, struct RBTreeNode *, struct RBTreeNode *);
+
 /****** ACCESSOR FUNCTIONS ******/
 
 /* Search the tree for a given key. */

@@ -120,6 +120,31 @@ void* delete_node(struct RBTreeNode **node) {
 }
 
 /**
+Private utility function used in the delete procedure. Reaplaces
+the subtree rooted at node dest with subtree rooted at node src.
+
+@param root Root of RB-tree where transplant is taking place.
+@param dest Destination of replacement.
+@param src Source of replacement.
+**/
+void transplant(struct RBTreeNode **root, struct RBTreeNode *dest,
+  struct RBTreeNode *src) {
+
+    if (dest->parent == NULL) {
+      *root = src; // dest is the root. 
+    } else if (dest == dest->parent->left) {
+      dest->parent->left = src; // dest is the left child of its parent.
+    } else {
+      dest->parent->right = src; // dest is the right child of its parent.
+    }
+
+    if (src != NULL) {
+      src->parent = dest->parent; // Src parent pointer must be updated.
+    }
+
+  }
+
+/**
 Perform a recursive search of the RB-tree rooted at root.
 Uses the BST property for fast searches. Let h = height(T),
 then the running time of search is O(h).
