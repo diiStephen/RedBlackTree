@@ -1,8 +1,11 @@
 #include "rbtree.h"
+#include<signal.h>
 #include<stdio.h>
+#include<stdlib.h>
 
 void testOne();
 void printTree(struct RBTreeNode*);
+void nullAction(int);
 
 int main(int argc, char** argv) {
 
@@ -15,6 +18,12 @@ int main(int argc, char** argv) {
 }
 
 void testOne() {
+
+  static struct sigaction act;
+  act.sa_handler = nullAction;
+  sigfillset(&(act.sa_mask));
+
+  sigaction(SIGSEGV, &act, NULL);
 
   struct RBTreeNode *root = init_rbtree(0, NULL);
 
@@ -30,6 +39,8 @@ void testOne() {
   result = search(20, root);
   printf("search(20, root) = [%p]: %d \n", result, result->key);
 
+  result = search(14, root);
+  printf("search(14, root) = [%p]: %d \n", result, result->key);
 
 }
 
@@ -43,4 +54,9 @@ void printTree(struct RBTreeNode* root) {
     printTree(root->right);
 
   }
+}
+
+void nullAction(int signo) {
+  printf("CAUGHT: %d\nMust be a SEGFAULT\n", signo);
+  exit(1);
 }
