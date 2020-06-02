@@ -25,7 +25,9 @@ void testOne() {
 
   sigaction(SIGSEGV, &act, NULL);
 
-  struct RBTreeNode *root = init_rbtree(0, NULL);
+  struct RBTreeNode *root   = init_rbtree(0, NULL);
+  struct RBTreeNode *result = NULL;
+  struct RBTreeNode *succ   = NULL;
 
   insert(10, NULL, &root);
   insert(4, NULL, &root);
@@ -36,7 +38,7 @@ void testOne() {
   insert(13, NULL, &root);
   printTree(root);
 
-  struct RBTreeNode *result = search(10, root);
+  result = search(10, root);
   printf("\n\nsearch(10, root) = [%p]: %d \n", result, result->key);
 
   result = search(20, root);
@@ -50,6 +52,14 @@ void testOne() {
 
   result = maximum(root);
   printf("Maximum key is: %d @ %p\n", result->key, result);
+
+  result = search(20, root);
+  succ = successor(result);
+  printf("Result: [%p]:%d\nSuccessor: [%p]:%d\n", result, result->key, succ, succ->key);
+
+  result = search(-4, root);
+  succ = successor(result);
+  printf("Result: [%p]:%d\nSuccessor: [%p]:%d\n", result, result->key, succ, succ->key);
 
 }
 

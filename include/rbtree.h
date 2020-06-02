@@ -68,10 +68,10 @@ struct RBTreeNode* minimum(struct RBTreeNode *);
 struct RBTreeNode* maximum(struct RBTreeNode *);
 
 /* Find predecessor node. */
-struct RBTreeNode* predecessor(int, struct RBTreeNode *);
+struct RBTreeNode* predecessor(struct RBTreeNode *);
 
-/* Find successor node. */ 
-struct RBTreeNode* successor(int, struct RBTreeNode *);
+/* Find successor node. */
+struct RBTreeNode* successor(struct RBTreeNode *);
 
 
 #endif

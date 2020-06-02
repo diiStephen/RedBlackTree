@@ -140,3 +140,24 @@ struct RBTreeNode* maximum(struct RBTreeNode *root) {
   else
     maximum(root->right);
 }
+
+/**
+Return a pointer to the node of the RB-tree with key that is the
+successor of key in the tree rooted at root.
+
+@param node Pointer to node of RB-tree to find successor of.
+@return pointer to successor node, or null.
+**/
+struct RBTreeNode* successor(struct RBTreeNode *node) {
+
+  if(node->right != NULL) {
+    return minimum(node->right);
+  }
+
+  struct RBTreeNode *trace = node->parent; // Ascending the tree.
+  while (trace != NULL && node == trace->right) {
+    node = trace;
+    trace = trace->parent;
+  }
+  return trace;
+}
