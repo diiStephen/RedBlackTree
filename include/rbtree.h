@@ -39,6 +39,8 @@ struct RBTreeNode {
 
 };
 
+/****** CONSTRUCTORS AND DESTRUCTORS ******/
+
 /* Constructor for Red-Black tree node. */
 struct RBTreeNode* init_rbtree_node(struct RBTreeNode *, struct RBTreeNode *, struct RBTreeNode *, int, void *, color_t);
 
@@ -49,9 +51,12 @@ void dest_rbtree_node(struct RBTreeNode *);
 /* Returns a pointer to a new RBTree node with NULL parent. */
 struct RBTreeNode* init_rbtree(int, void *);
 
+/****** UPDATE FUNCTIONS ******/
+
 /* Insertion function. */
 struct RBTreeNode* insert(int, void *, struct RBTreeNode **);
 
+/****** ACCESSOR FUNCTIONS ******/
 
 
 #endif
