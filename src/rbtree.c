@@ -99,8 +99,8 @@ that node.
 @return Pointer to data removed from the tree, or null if node with
 given key does not exist.
 **/
-void* delete(int key, struct RBTreeNode **root) {
-  struct RBTreeNode *result = search(key, *root);
+void* delete(int key, struct RBTreeNode *root) {
+  struct RBTreeNode *result = search(key, root);
   if (result == NULL)
     return result;
   else

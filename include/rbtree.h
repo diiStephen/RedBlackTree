@@ -3,7 +3,8 @@
 
 /* Simple Red-Black tree implementation. */
 
-/* TODO:
+/*
+TODO:
 		1. Finish core functionality, i.e. insert/delete, search, etc..
 
 		2. Add functionality for iterator design pattern. This will make the
@@ -18,6 +19,10 @@
 
 		6. implementation should be modularized with the implementation hidden
 		   behind a public interface.
+
+		7. Check for invalidating nodes in functions that accept a node as a
+			 parameter. The program should raise a signal indicating that the node
+			 is not valid.
 */
 
 enum color {
@@ -56,10 +61,11 @@ struct RBTreeNode* init_rbtree(int, void *);
 struct RBTreeNode* insert(int, void *, struct RBTreeNode **);
 
 /* Delete function - public. */
-void* delete(int, struct RBTreeNode **);
+void* delete(int, struct RBTreeNode *);
 
-/* Delete function - private. */ 
+/* Delete function - private. */
 void* delete_node(struct RBTreeNode **);
+
 /****** ACCESSOR FUNCTIONS ******/
 
 /* Search the tree for a given key. */
