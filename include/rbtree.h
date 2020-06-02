@@ -1,0 +1,53 @@
+#ifndef RBTREE_H
+#define RBTREE_H
+
+/* Simple Red-Black tree implementation. */
+
+/* TODO:
+		1. Finish core functionality, i.e. insert/delete, search, etc..
+
+		2. Add functionality for iterator design pattern. This will make the
+			 traversal algorithms easier. Return an iterator rather than take
+			 function pointers.
+
+		3. Make sure the data structure is multi-thread safe.
+
+		4. Add doxygen documention.
+
+		5. Compile and link as a shared object library, besides the test programs. 
+*/
+
+enum color {
+	    RED,
+	    BLACK
+};
+
+typedef enum color color_t;
+
+struct RBTreeNode {
+
+  struct RBTreeNode *parent; /* Pointer to parent node.      */
+  struct RBTreeNode *left;   /* Pointer to left child node.  */
+  struct RBTreeNode *right;  /* Pointer to right child node. */
+
+  int key;                   /* int key used for ordering data. */
+  void* data;                /* void pointer to satelite data.  */
+  color_t c;                 /* Current color (red/black) of the node. */
+
+};
+
+/* Constructor for Red-Black tree node. */
+struct RBTreeNode* init_rbtree_node(struct RBTreeNode *, struct RBTreeNode *, struct RBTreeNode *, int, void*, color_t);
+
+/* Destructor for Red-Black tree node. */
+void dest_rbtree_node(struct RBTreeNode *);
+
+/* Constructor for Red-Black tree itself. */
+/* Returns a pointer to a new RBTree node with NULL parent. */
+struct RBTreeNode* init_rbtree(int, void *);
+
+
+
+
+
+#endif
