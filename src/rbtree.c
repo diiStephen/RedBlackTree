@@ -2,7 +2,8 @@
 #include<stdio.h>
 #include<stdlib.h>
 
-struct RBTreeNode* init_rbtree_node(struct RBTreeNode *p, struct RBTreeNode *l, struct RBTreeNode *r, int k, void *d, color_t c) {
+struct RBTreeNode* init_rbtree_node(struct RBTreeNode *p, struct RBTreeNode *l,
+  struct RBTreeNode *r, int k, void *d, color_t c) {
 
   struct RBTreeNode *node = NULL;
 
@@ -143,7 +144,7 @@ struct RBTreeNode* maximum(struct RBTreeNode *root) {
 
 /**
 Return a pointer to the node of the RB-tree with key that is the
-predecessor of key in the tree rooted at root.
+predecessor of the key given node.
 
 @param node Pointer to node of RB-tree to find predecessor of.
 @return pointer to predecessor node, or null.
@@ -164,7 +165,7 @@ struct RBTreeNode* predecessor(struct RBTreeNode *node) {
 
 /**
 Return a pointer to the node of the RB-tree with key that is the
-successor of key in the tree rooted at root.
+successor of key of the given node.
 
 @param node Pointer to node of RB-tree to find successor of.
 @return pointer to successor node, or null.
