@@ -75,7 +75,7 @@ struct RBTreeNode* insert(int k, void *data, struct RBTreeNode **root) {
   }
   newest->parent = parent;
 
-  // Update pointers. 
+  // Update pointers.
   if (parent == NULL) {
     *root = newest; //Tree was empty.
   } else if (k < parent->key) {
@@ -85,4 +85,29 @@ struct RBTreeNode* insert(int k, void *data, struct RBTreeNode **root) {
   }
 
   return newest;
+}
+
+/**
+Perform a recursive search of the RB-tree rooted at root.
+Uses the BST property for fast searches. Let h = height(T),
+then the running time of search is O(h).
+
+@param key Key associated to the node being searched.
+@param root Root of the RB-tree being searched.
+@return Pointer to node with given key, or null if search fails.
+**/
+struct RBTreeNode* search(int key, struct RBTreeNode *root) {
+
+  struct RBTreeNode *walk = root;
+  
+  if (walk == NULL) {
+    return NULL;
+  } else if (key < walk->key) {
+    search(key, walk->left);
+  } else if (key > walk->key) {
+    search(key, walk->right);
+  } else {
+    return walk;
+  }
+
 }

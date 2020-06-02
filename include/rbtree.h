@@ -58,5 +58,7 @@ struct RBTreeNode* insert(int, void *, struct RBTreeNode **);
 
 /****** ACCESSOR FUNCTIONS ******/
 
+/* Search the tree for a given key. */ 
+struct RBTreeNode* search(int, struct RBTreeNode *);
 
 #endif

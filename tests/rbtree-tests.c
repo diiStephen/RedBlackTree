@@ -6,7 +6,7 @@ void printTree(struct RBTreeNode*);
 
 int main(int argc, char** argv) {
 
-  /* Note: Tests, at the moment, contain memory leaks. */ 
+  /* Note: Tests, at the moment, contain memory leaks. */
 
   printf("Beginning Red-Black Tree Tests!\n");
   testOne();
@@ -22,8 +22,14 @@ void testOne() {
   insert(4, NULL, &root);
   insert(20, NULL, &root);
   insert(-4, NULL, &root);
-
   printTree(root);
+
+  struct RBTreeNode *result = search(10, root);
+  printf("\n\nsearch(10, root) = [%p]: %d \n", result, result->key);
+
+  result = search(20, root);
+  printf("search(20, root) = [%p]: %d \n", result, result->key);
+
 
 }
 
