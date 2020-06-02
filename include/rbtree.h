@@ -48,7 +48,6 @@ struct RBTreeNode* init_rbtree_node(struct RBTreeNode *, struct RBTreeNode *, st
 void dest_rbtree_node(struct RBTreeNode *);
 
 /* Constructor for Red-Black tree itself. */
-/* Returns a pointer to a new RBTree node with NULL parent. */
 struct RBTreeNode* init_rbtree(int, void *);
 
 /****** UPDATE FUNCTIONS ******/
@@ -56,6 +55,11 @@ struct RBTreeNode* init_rbtree(int, void *);
 /* Insertion function. */
 struct RBTreeNode* insert(int, void *, struct RBTreeNode **);
 
+/* Delete function - public. */
+void* delete(int, struct RBTreeNode **);
+
+/* Delete function - private. */ 
+void* delete_node(struct RBTreeNode **);
 /****** ACCESSOR FUNCTIONS ******/
 
 /* Search the tree for a given key. */

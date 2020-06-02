@@ -89,6 +89,37 @@ struct RBTreeNode* insert(int k, void *data, struct RBTreeNode **root) {
 }
 
 /**
+Public delete function. Removes a node with the given key
+in RB-tree rooted at *root. First the function finds a node
+with the given key, then calls the delete_node function on
+that node.
+
+@param key Key of node to be removed from the tree.
+@param root Pointer to the root pointer of the rbtree.
+@return Pointer to data removed from the tree, or null if node with
+given key does not exist.
+**/
+void* delete(int key, struct RBTreeNode **root) {
+  struct RBTreeNode *result = search(key, *root);
+  if (result == NULL)
+    return result;
+  else
+    return delete_node(&result);
+}
+
+/**
+Private utility function for deleting nodes. Removes the node
+pointed to by node from the rbtree.
+
+@param node Pointer to RBTreeNode pointer to be removed from the tree.
+@return pointer to satelite data associated to the node being removed
+from the tree.
+**/
+void* delete_node(struct RBTreeNode **node) {
+  return NULL;
+}
+
+/**
 Perform a recursive search of the RB-tree rooted at root.
 Uses the BST property for fast searches. Let h = height(T),
 then the running time of search is O(h).
