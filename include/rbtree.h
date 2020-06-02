@@ -58,7 +58,16 @@ struct RBTreeNode* insert(int, void *, struct RBTreeNode **);
 
 /****** ACCESSOR FUNCTIONS ******/
 
-/* Search the tree for a given key. */ 
+/* Search the tree for a given key. */
 struct RBTreeNode* search(int, struct RBTreeNode *);
+
+/* Search tree for node with minimum key. */
+struct RBTreeNode* minimum(struct RBTreeNode *);
+
+/* Search tree for node with maximum key. */
+struct RBTreeNode* maximum(struct RBTreeNode *);
+
+
+
 
 #endif

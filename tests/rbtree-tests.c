@@ -39,8 +39,14 @@ void testOne() {
   result = search(20, root);
   printf("search(20, root) = [%p]: %d \n", result, result->key);
 
-  result = search(14, root);
+  result = search(-4, root);
   printf("search(14, root) = [%p]: %d \n", result, result->key);
+
+  result = minimum(root);
+  printf("Minimum key is: %d @ %p\n", result->key, result);
+
+  result = maximum(root);
+  printf("Maximum key is: %d @ %p\n", result->key, result);
 
 }
 

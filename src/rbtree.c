@@ -99,7 +99,7 @@ then the running time of search is O(h).
 struct RBTreeNode* search(int key, struct RBTreeNode *root) {
 
   struct RBTreeNode *walk = root;
-  
+
   if (walk == NULL) {
     return NULL;
   } else if (key < walk->key) {
@@ -109,5 +109,34 @@ struct RBTreeNode* search(int key, struct RBTreeNode *root) {
   } else {
     return walk;
   }
+}
 
+/**
+Return a pointer to the node of the RB-tree with minimum key value. The search
+is done by recursively following the left pointers of each node from the root.
+
+@param root Root of the tree to get minimum key.
+@return Pointer to node of the tree with minimum key, or null if the tree is
+empty.
+**/
+struct RBTreeNode* minimum(struct RBTreeNode *root) {
+  if (root == NULL || root->left == NULL) // Short circuting.
+    return root;
+  else
+    minimum(root->left);
+}
+
+/**
+Return a pointer to the node of the RB-tree with maximum key value. The search
+is done by recursively following the right pointers of each node from the root.
+
+@param root Root of the tree to get minimum key.
+@return Pointer to node of the tree with maximum key, or null if the tree is
+empty.
+**/
+struct RBTreeNode* maximum(struct RBTreeNode *root) {
+  if (root == NULL || root->right == NULL)
+    return root;
+  else
+    maximum(root->right);
 }
