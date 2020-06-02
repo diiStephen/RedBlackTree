@@ -14,7 +14,10 @@
 
 		4. Add doxygen documention.
 
-		5. Compile and link as a shared object library, besides the test programs. 
+		5. Compile and link as a shared object library, besides the test programs.
+
+		6. implementation should be modularized with the implementation hidden
+		   behind a public interface. 
 */
 
 enum color {
