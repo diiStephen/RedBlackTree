@@ -28,6 +28,7 @@ void testOne() {
   struct RBTreeNode *root   = init_rbtree(0, NULL);
   struct RBTreeNode *result = NULL;
   struct RBTreeNode *succ   = NULL;
+  struct RBTreeNode *pred   = NULL;
 
   insert(10, NULL, &root);
   insert(4, NULL, &root);
@@ -60,6 +61,10 @@ void testOne() {
   result = search(-4, root);
   succ = successor(result);
   printf("Result: [%p]:%d\nSuccessor: [%p]:%d\n", result, result->key, succ, succ->key);
+
+  result = search(13, root);
+  pred = predecessor(result);
+  printf("Result: [%p]:%d\nPredecessor: [%p]:%d\n", result, result->key, pred, pred->key);
 
 }
 
