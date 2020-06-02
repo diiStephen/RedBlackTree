@@ -34,13 +34,13 @@ struct RBTreeNode {
   struct RBTreeNode *right;  /* Pointer to right child node. */
 
   int key;                   /* int key used for ordering data. */
-  void* data;                /* void pointer to satelite data.  */
+  void *data;                /* void pointer to satelite data.  */
   color_t c;                 /* Current color (red/black) of the node. */
 
 };
 
 /* Constructor for Red-Black tree node. */
-struct RBTreeNode* init_rbtree_node(struct RBTreeNode *, struct RBTreeNode *, struct RBTreeNode *, int, void*, color_t);
+struct RBTreeNode* init_rbtree_node(struct RBTreeNode *, struct RBTreeNode *, struct RBTreeNode *, int, void *, color_t);
 
 /* Destructor for Red-Black tree node. */
 void dest_rbtree_node(struct RBTreeNode *);
@@ -50,7 +50,7 @@ void dest_rbtree_node(struct RBTreeNode *);
 struct RBTreeNode* init_rbtree(int, void *);
 
 /* Insertion function. */
-struct RBTreeNode* insert(int, void*, struct RBTreeNode**);
+struct RBTreeNode* insert(int, void *, struct RBTreeNode **);
 
 
 
