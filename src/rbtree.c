@@ -49,7 +49,7 @@ Function to free memory used by entire RBT. The function
 post-order walks the tree, freeing each node.
 
 CAUTION: This function assumes that all data associated to
-each node has been destroyed.
+each node has already been destroyed.
 
 @param root Root of RBT to be de-allocated.
 **/

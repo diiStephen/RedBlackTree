@@ -44,31 +44,34 @@ void testOne() {
   printTree(root);
 
   result = search(10, root);
-  printf("\n\nsearch(10, root) = [%p]: %d \n", result, result->key);
+  printf("\n\nsearch(10, root) = [%p]: %d \n", (void*)result, result->key);
 
   result = search(20, root);
-  printf("search(20, root) = [%p]: %d \n", result, result->key);
+  printf("search(20, root) = [%p]: %d \n", (void*)result, result->key);
 
   result = search(-4, root);
-  printf("search(14, root) = [%p]: %d \n", result, result->key);
+  printf("search(14, root) = [%p]: %d \n", (void*)result, result->key);
 
   result = minimum(root);
-  printf("Minimum key is: %d @ %p\n", result->key, result);
+  printf("Minimum key is: %d @ %p\n", result->key, (void*)result);
 
   result = maximum(root);
-  printf("Maximum key is: %d @ %p\n", result->key, result);
+  printf("Maximum key is: %d @ %p\n", result->key, (void*)result);
 
   result = search(20, root);
   succ = successor(result);
-  printf("Result: [%p]:%d\nSuccessor: [%p]:%d\n", result, result->key, succ, succ->key);
+  printf("Result: [%p]:%d\nSuccessor: [%p]:%d\n", (void*)result, result->key,
+    (void*)succ, succ->key);
 
   result = search(-4, root);
   succ = successor(result);
-  printf("Result: [%p]:%d\nSuccessor: [%p]:%d\n", result, result->key, succ, succ->key);
+  printf("Result: [%p]:%d\nSuccessor: [%p]:%d\n", (void*)result, result->key,
+    (void*)succ, succ->key);
 
   result = search(13, root);
   pred = predecessor(result);
-  printf("Result: [%p]:%d\nPredecessor: [%p]:%d\n", result, result->key, pred, pred->key);
+  printf("Result: [%p]:%d\nPredecessor: [%p]:%d\n", (void*)result, result->key,
+    (void*)pred, pred->key);
 
   printf("Testing delete functions!\n");
 
@@ -116,7 +119,7 @@ void testTwo() {
 
   printf("Destroying tree!\n");
   dest_rbtree(root);
-  
+
 }
 
 void printTree(struct RBTreeNode* root) {
@@ -125,7 +128,7 @@ void printTree(struct RBTreeNode* root) {
 
   if (root != NULL) {
     printTree(root->left);
-    printf("[%p] Key = %d\n", root, root->key);
+    printf("[%p] Key = %d\n", (void*)root, root->key);
     printTree(root->right);
 
   }
