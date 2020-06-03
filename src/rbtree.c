@@ -41,8 +41,8 @@ void dest_rbtree_node(struct RBTreeNode *node) {
 }
 
 struct RBTreeNode* init_rbtree(int k, void *d) {
-  struct RBTreeNode *root = init_rbtree_node(NULL, NULL, NULL, k, d, BLACK,
-    false);
+  struct RBTreeNode *sentinel = init_rbtree_node(NULL, NULL, NULL, 0, NULL, BLACK, true); //Allocate sentinel node.
+  struct RBTreeNode *root = init_rbtree_node(sentinel, NULL, NULL, k, d, BLACK, false);   //Allocate root node with root->p = sentinel.
   return root;
 }
 
