@@ -25,6 +25,10 @@ TODO:
 			 is not valid.
 */
 
+#define true 1
+#define false 0
+typedef int bool;
+
 enum color {
 	    RED,
 	    BLACK
@@ -88,6 +92,6 @@ struct RBTreeNode* predecessor(struct RBTreeNode *);
 struct RBTreeNode* successor(struct RBTreeNode *);
 
 /****** UTILITY FUNCTIONS ******/
-void validate(struct RBTreeNode *);
+void validate(struct RBTreeNode *, bool);
 
 #endif

@@ -182,6 +182,7 @@ then the running time of search is O(h).
 @return Pointer to node with given key, or null if search fails.
 **/
 struct RBTreeNode* search(int key, struct RBTreeNode *root) {
+  validate(root, false);
 
   struct RBTreeNode *walk = root;
 
@@ -205,6 +206,7 @@ is done by recursively following the left pointers of each node from the root.
 empty.
 **/
 struct RBTreeNode* minimum(struct RBTreeNode *root) {
+  validate(root, false);
   if (root == NULL || root->left == NULL) // Short circuting.
     return root;
   else
@@ -220,6 +222,7 @@ is done by recursively following the right pointers of each node from the root.
 empty.
 **/
 struct RBTreeNode* maximum(struct RBTreeNode *root) {
+  validate(root, false);
   if (root == NULL || root->right == NULL) // Short circuting.
     return root;
   else
@@ -234,8 +237,8 @@ predecessor of the key given node.
 @return pointer to predecessor node, or null.
 **/
 struct RBTreeNode* predecessor(struct RBTreeNode *node) {
-  validate(node);
-  
+  validate(node, true);
+
   if (node->left != NULL) {
     return maximum(node->left);
   }
@@ -257,7 +260,7 @@ successor of key of the given node.
 @return pointer to successor node, or null.
 **/
 struct RBTreeNode* successor(struct RBTreeNode *node) {
-  validate(node);
+  validate(node, true);
 
   if (node->right != NULL) {
     return minimum(node->right);
@@ -278,9 +281,19 @@ Validate a the RBTreeNode pointed to by node.
 Convention: A node removed from the tree will have its parent pointer
 assigned to itself. This is used to indicate a defunct node of the tree.
 
+Some functions allow a null pointer as node, others do not, so
+the chkNull parameter here specifies if a null node is considered
+invalud.
+
 @param node Pointer to RBTreeNode to be validated
+@param chkNull Consider null pointers invalid?
 **/
-void validate(struct RBTreeNode *node) {
-  if (node == NULL || node->parent == node)
-    display_error(INV_NODE);
+void validate(struct RBTreeNode *node, bool chkNull) {
+  if(chkNull) {
+    if (node == NULL || node->parent == node)
+      display_error(INV_NODE);
+  } else {
+    if (node->parent == node)
+      display_error(INV_NODE);
+  }
 }
