@@ -33,13 +33,46 @@ void dest_rbtree_node(struct RBTreeNode *node) {
     /* Node must have it's data destroyed before destroying the node. */
     /* Convention is to set the node->data ptr to 0 */
 
-    free(node);
+    free_rbtree_node(&node);
 
   } else {
     display_error(INV_DELOC);
   }
 }
 
+/**
+Specialized free function to avoid dangling pointers with
+RBTreeNodes after they have been removed. Once the node has been
+freed the reference is nullified to ensure we don't have a dangling
+pointer.
+
+NOTE: There may be other references to the same block of data, though. We must
+be careful to avoid any such situation. This may be particuarly relevant to
+the sentinel node where it will be the child of many nodes in the RBT.
+
+@param node Double pointer to RBTreeNode to be freed. 
+}
+
+**/
+void free_rbtree_node(struct RBTreeNode **node) {
+  if(node != NULL) {
+    free(*node);
+    *node = NULL;
+  }
+}
+
+/**
+Function to construct a new RBT with intial key k and initial satelite
+data pointer d. Function creates a root node and the sentinel node. The
+sentinel node can always be accessed by using root->parent. This sentinel
+will be useful in simplifying the implementation of the RBT operations.
+
+NOTE: All operations will need to take into account the sentinel node.
+
+@param k Initial key of the root data.
+@param d Inital satelite data pointer, becomes root node's associated data.
+@return Pointer to root node of the rbtree.
+**/
 struct RBTreeNode* init_rbtree(int k, void *d) {
   struct RBTreeNode *sentinel = init_rbtree_node(NULL, NULL, NULL, 0, NULL, BLACK, true); //Allocate sentinel node.
   struct RBTreeNode *root = init_rbtree_node(sentinel, NULL, NULL, k, d, BLACK, false);   //Allocate root node with root->p = sentinel.
