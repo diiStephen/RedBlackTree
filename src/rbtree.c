@@ -8,10 +8,9 @@ struct RBTreeNode* init_rbtree_node(struct RBTreeNode *p, struct RBTreeNode *l,
 
   struct RBTreeNode *node = NULL;
 
-  if ((node = malloc(sizeof(struct RBTreeNode))) == NULL ) {
-    fprintf(stderr, "Could not allocate memory for new RBTreeNode.");
-    exit(1);
-  }
+  if ((node = malloc(sizeof(struct RBTreeNode))) == NULL )
+    display_error(MEM_ERROR);
+
 
   node->parent = p;
   node->left   = l;
@@ -36,19 +35,13 @@ void dest_rbtree_node(struct RBTreeNode *node) {
     free(node);
 
   } else {
-    fprintf(stderr, "Data has not been deallocated.\n");
-    exit(1);
+    display_error(INV_DELOC);
   }
 }
 
 struct RBTreeNode* init_rbtree(int k, void *d) {
-
-  /* Construct a new Red-Black tree by returning a root node. */
-
   struct RBTreeNode *root = init_rbtree_node(NULL, NULL, NULL, k, d, BLACK);
-
   return root;
-
 }
 
 /**
@@ -241,6 +234,8 @@ predecessor of the key given node.
 @return pointer to predecessor node, or null.
 **/
 struct RBTreeNode* predecessor(struct RBTreeNode *node) {
+  validate(node);
+  
   if (node->left != NULL) {
     return maximum(node->left);
   }
@@ -262,6 +257,7 @@ successor of key of the given node.
 @return pointer to successor node, or null.
 **/
 struct RBTreeNode* successor(struct RBTreeNode *node) {
+  validate(node);
 
   if (node->right != NULL) {
     return minimum(node->right);
@@ -274,4 +270,17 @@ struct RBTreeNode* successor(struct RBTreeNode *node) {
   }
   return trace;
 
+}
+
+/**
+Validate a the RBTreeNode pointed to by node.
+
+Convention: A node removed from the tree will have its parent pointer
+assigned to itself. This is used to indicate a defunct node of the tree.
+
+@param node Pointer to RBTreeNode to be validated
+**/
+void validate(struct RBTreeNode *node) {
+  if (node == NULL || node->parent == node)
+    display_error(INV_NODE);
 }

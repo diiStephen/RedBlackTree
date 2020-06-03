@@ -1,5 +1,6 @@
 #include "errors.h"
 #include<stdio.h>
+#include<stdlib.h>
 
 void display_error(char* msg) {
 

@@ -38,7 +38,7 @@ rbtree.o: rbtree.c rbtree.h errors.h
 	$(CC) $(CFLAGS) $(INCLUDE) $<
 	@echo 'done!'
 
-errors.o: errros.c errors.h
+errors.o: errors.c errors.h
 	@echo 'Building error module'
 	$(CC) $(CFLAGS) $(INCLUDE) $<
 	@echo 'done!'

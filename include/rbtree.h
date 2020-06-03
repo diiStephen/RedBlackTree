@@ -87,5 +87,7 @@ struct RBTreeNode* predecessor(struct RBTreeNode *);
 /* Find successor node. */
 struct RBTreeNode* successor(struct RBTreeNode *);
 
+/****** UTILITY FUNCTIONS ******/
+void validate(struct RBTreeNode *);
 
 #endif
