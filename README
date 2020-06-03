@@ -16,6 +16,8 @@ function that displays a given message and shuts down the program if
 any error states occur. This can be made more elegant.
 
 (C) Further modularization of the code, i.e. further separation of interface
-and implementation would be necessary here.
+and implementation would be necessary here. It would also be useful now, as
+the project grows more complex, to include a separate memory module to handle
+all of the memory issues. 
 
-(D) Smaller improvements like using const when appropriate. 
+(D) Smaller improvements like using const when appropriate.
