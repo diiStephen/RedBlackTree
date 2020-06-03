@@ -47,7 +47,8 @@ struct RBTreeNode {
 /****** CONSTRUCTORS AND DESTRUCTORS ******/
 
 /* Constructor for Red-Black tree node. */
-struct RBTreeNode* init_rbtree_node(struct RBTreeNode *, struct RBTreeNode *, struct RBTreeNode *, int, void *, color_t);
+struct RBTreeNode* init_rbtree_node(struct RBTreeNode *, struct RBTreeNode *,
+	struct RBTreeNode *, int, void *, color_t);
 
 /* Destructor for Red-Black tree node. */
 void dest_rbtree_node(struct RBTreeNode *);

@@ -2,17 +2,21 @@
 #include<signal.h>
 #include<stdio.h>
 #include<stdlib.h>
+#include<time.h>
 
 void testOne();
+void testTwo();
 void printTree(struct RBTreeNode*);
 void nullAction(int);
+void print_node(struct RBTreeNode*);
 
 int main(int argc, char** argv) {
 
   /* Note: Tests, at the moment, contain memory leaks. */
 
   printf("Beginning Red-Black Tree Tests!\n");
-  testOne();
+  //testOne();
+  testTwo();
 
   return 0;
 }
@@ -78,6 +82,39 @@ void testOne() {
 
 }
 
+void testTwo() {
+  printf("Starting test 2!\n\n");
+
+  struct RBTreeNode *root   = NULL;
+  struct RBTreeNode *result = NULL;
+  int toInsert = 0;
+
+  printf("Building random tree!\n");
+  toInsert = rand() % 100;
+  root = init_rbtree(toInsert, NULL);
+  for(int i = 0; i < 10; i++) {
+    toInsert = rand() % 100;
+    insert(toInsert, NULL, &root);
+  }
+
+  printTree(root);
+
+  result = search(20, root);
+  print_node(result);
+
+  result = search(14, root);
+  print_node(result);
+
+  result = maximum(root);
+  print_node(result);
+
+  result = minimum(root);
+  print_node(result);
+
+  delete(result->key, root);
+  printTree(root);
+}
+
 void printTree(struct RBTreeNode* root) {
 
   /* Inorder traversal of the tree. */
@@ -93,4 +130,12 @@ void printTree(struct RBTreeNode* root) {
 void nullAction(int signo) {
   printf("CAUGHT: %d\nMust be a SEGFAULT\n", signo);
   exit(1);
+}
+
+void print_node(struct RBTreeNode* node) {
+  if (node != NULL) {
+    printf("Node@[%p]: Key = %d\n", (void*)node, node->key);
+  } else {
+    printf("Node@[Null]\n");
+  }
 }
