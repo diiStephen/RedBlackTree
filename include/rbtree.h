@@ -5,7 +5,6 @@
 
 /*
 TODO:
-		1. Finish core functionality, i.e. insert/delete, search, etc..
 
 		2. Add functionality for iterator design pattern. This will make the
 			 traversal algorithms easier. Return an iterator rather than take
@@ -19,10 +18,6 @@ TODO:
 
 		6. implementation should be modularized with the implementation hidden
 		   behind a public interface.
-
-		7. Check for invalidating nodes in functions that accept a node as a
-			 parameter. The program should raise a signal indicating that the node
-			 is not valid.
 */
 
 #define true 1
@@ -92,6 +87,8 @@ struct RBTreeNode* predecessor(struct RBTreeNode *);
 struct RBTreeNode* successor(struct RBTreeNode *);
 
 /****** UTILITY FUNCTIONS ******/
+
+/* Validate nodes accepted as parameters. */
 void validate(struct RBTreeNode *, bool);
 
 #endif

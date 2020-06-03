@@ -283,7 +283,7 @@ assigned to itself. This is used to indicate a defunct node of the tree.
 
 Some functions allow a null pointer as node, others do not, so
 the chkNull parameter here specifies if a null node is considered
-invalud.
+invalid.
 
 @param node Pointer to RBTreeNode to be validated
 @param chkNull Consider null pointers invalid?
