@@ -1,9 +1,9 @@
-# makefile for rbtree 
+# makefile for rbtree
 
-.SUFFIXES: .o .c .h 
+.SUFFIXES: .o .c .h
 
 vpath %.c src tests
-vpath %.h include 
+vpath %.h include
 
 CC     = gcc
 CFLAGS = -c -Wall -pedantic -Wextra -g
@@ -23,9 +23,9 @@ all: rbtree.o
 	$(CC) rbtree.o -o $(BUILD)/$(NAME)
 	@echo '...done!'
 
-test: rbtree-tests.o rbtree.o
+test: rbtree-tests.o rbtree.o errors.o
 	@echo 'Starting linking process for test files...'
-	$(CC) rbtree-tests.o rbtree.o -o $(BUILD)/$(TNAME)
+	$(CC) rbtree-tests.o rbtree.o errors.o -o $(BUILD)/$(TNAME)
 	@echo '...done!'
 
 rbtree-tests.o: rbtree-tests.c rbtree.h
@@ -33,8 +33,13 @@ rbtree-tests.o: rbtree-tests.c rbtree.h
 	$(CC) $(CFLAGS) $(INCLUDE) $<
 	@echo 'done!'
 
-rbtree.o: rbtree.c rbtree.h
+rbtree.o: rbtree.c rbtree.h errors.h
 	@echo 'Building rbtree.'
+	$(CC) $(CFLAGS) $(INCLUDE) $<
+	@echo 'done!'
+
+errors.o: errros.c errors.h
+	@echo 'Building error module'
 	$(CC) $(CFLAGS) $(INCLUDE) $<
 	@echo 'done!'
 
@@ -46,5 +51,3 @@ clean:
 	rm -f ${SRC}/*.c~
 	rm -f makefile~
 	@echo '...done!'
-
-
