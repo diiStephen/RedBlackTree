@@ -18,8 +18,6 @@ TODO:
 
 		6. Implementation should be modularized with the implementation hidden
 		   behind a public interface.
-
-		7. A destructor or delete function for the tree should be given.
 */
 
 #define true 1
@@ -58,7 +56,7 @@ void dest_rbtree_node(struct RBTreeNode *);
 struct RBTreeNode* init_rbtree(int, void *);
 
 /* Destructor for for RB-Tree. */
-void dest_rbtree(struct RBTreeNode *); 
+void dest_rbtree(struct RBTreeNode *);
 
 /****** UPDATE FUNCTIONS ******/
 
