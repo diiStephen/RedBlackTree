@@ -16,8 +16,10 @@ TODO:
 
 		5. Compile and link as a shared object library, besides the test programs.
 
-		6. implementation should be modularized with the implementation hidden
+		6. Implementation should be modularized with the implementation hidden
 		   behind a public interface.
+
+		7. A destructor or delete function for the tree should be given.
 */
 
 #define true 1
@@ -54,6 +56,9 @@ void dest_rbtree_node(struct RBTreeNode *);
 
 /* Constructor for Red-Black tree itself. */
 struct RBTreeNode* init_rbtree(int, void *);
+
+/* Destructor for for RB-Tree. */
+void dest_rbtree(struct RBTreeNode *); 
 
 /****** UPDATE FUNCTIONS ******/
 

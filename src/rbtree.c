@@ -45,6 +45,27 @@ struct RBTreeNode* init_rbtree(int k, void *d) {
 }
 
 /**
+Function to free memory used by entire RBT. The function
+post-order walks the tree, freeing each node.
+
+CAUTION: This function assumes that all data associated to
+each node has been destroyed.
+
+@param root Root of RBT to be de-allocated.
+**/
+void dest_rbtree(struct RBTreeNode *root) {
+
+  if (root->left != NULL)
+    dest_rbtree(root->left);
+  if (root->right != NULL)
+    dest_rbtree(root->right);
+
+  root->data = 0;
+  dest_rbtree_node(root);
+
+}
+
+/**
 Insert data into the red-black tree. Ordereding is
 given by the integer key associated with the satelite
 data.

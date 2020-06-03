@@ -113,6 +113,10 @@ void testTwo() {
 
   delete(result->key, root);
   printTree(root);
+
+  printf("Destroying tree!\n");
+  dest_rbtree(root);
+  
 }
 
 void printTree(struct RBTreeNode* root) {
