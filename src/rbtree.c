@@ -289,11 +289,17 @@ invalud.
 @param chkNull Consider null pointers invalid?
 **/
 void validate(struct RBTreeNode *node, bool chkNull) {
-  if(chkNull) {
-    if (node == NULL || node->parent == node)
-      display_error(INV_NODE);
-  } else {
-    if (node->parent == node)
-      display_error(INV_NODE);
+
+  switch (chkNull) {
+
+    case true:
+      if (node == NULL || node->parent == node)
+        display_error(INV_NODE);
+      break;
+
+    case false:
+      if (node != NULL && node->parent == node)
+        display_error(INV_NODE);
+      break;
   }
 }
