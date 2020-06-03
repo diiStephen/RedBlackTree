@@ -64,9 +64,9 @@ struct RBTreeNode* insert(int, void *, struct RBTreeNode **);
 void* delete(int, struct RBTreeNode *);
 
 /* Delete function - private. */
-void* delete_node(struct RBTreeNode **);
+void* delete_node(struct RBTreeNode **, struct RBTreeNode *);
 
-/* Transplant utility function - private. */ 
+/* Transplant utility function - private. */
 void transplant(struct RBTreeNode **, struct RBTreeNode *, struct RBTreeNode *);
 
 /****** ACCESSOR FUNCTIONS ******/

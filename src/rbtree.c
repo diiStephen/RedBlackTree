@@ -104,19 +104,51 @@ void* delete(int key, struct RBTreeNode *root) {
   if (result == NULL)
     return result;
   else
-    return delete_node(&result);
+    return delete_node(&root, result);
 }
 
 /**
 Private utility function for deleting nodes. Removes the node
 pointed to by node from the rbtree.
 
+@param root Pointer to the root pointer of the RBT where the deletion
+is to take place.
 @param node Pointer to RBTreeNode pointer to be removed from the tree.
 @return pointer to satelite data associated to the node being removed
 from the tree.
 **/
-void* delete_node(struct RBTreeNode **node) {
-  return NULL;
+void* delete_node(struct RBTreeNode **root, struct RBTreeNode *node) {
+
+  struct RBTreeNode *deleted = node; //Save pointer to the node.
+  struct RBTreeNode *succ    = NULL; //ptr to sucessor of node.
+  void *response             = NULL; //ptr to hold the response.
+
+  if (node->left == NULL) {
+    transplant(root, node, node->right); // Case I
+  } else if (node->right == NULL) {
+    transplant(root, node, node->left); // Case II
+  } else { // Cases III, IV
+    succ = minimum(node->right);
+    if (succ->parent != node) {
+      transplant(root, succ, succ->right);
+      succ->right = node->right;
+      succ->right->parent = succ;
+    }
+    transplant(root, node, succ);
+    succ->left = node->left;
+    succ->left->parent = succ;
+  }
+
+  deleted->parent = deleted; //Convention for deleted node.
+  deleted->right = NULL;
+  deleted->left = NULL;
+  response = deleted->data;
+  deleted->data = 0; // Convention for deleted node.
+
+  dest_rbtree_node(deleted); // Delete the memory for the node.
+
+  return response;
+
 }
 
 /**
