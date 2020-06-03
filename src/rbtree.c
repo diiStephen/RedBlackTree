@@ -112,8 +112,7 @@ data.
 **/
 struct RBTreeNode* insert(int k, void *data, struct RBTreeNode **root) {
 
-  struct RBTreeNode *newest = init_rbtree_node(NULL, NULL, NULL, k, data, BLACK,
-    false);
+  struct RBTreeNode *newest = init_rbtree_node(NULL, NULL, NULL, k, data, BLACK, false);
   struct RBTreeNode *walk = *root;
   struct RBTreeNode *parent = NULL;
 
