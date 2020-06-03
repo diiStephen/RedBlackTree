@@ -4,7 +4,7 @@
 #include<stdlib.h>
 
 struct RBTreeNode* init_rbtree_node(struct RBTreeNode *p, struct RBTreeNode *l,
-  struct RBTreeNode *r, int k, void *d, color_t c) {
+  struct RBTreeNode *r, int k, void *d, color_t c, bool s) {
 
   struct RBTreeNode *node = NULL;
 
@@ -18,6 +18,7 @@ struct RBTreeNode* init_rbtree_node(struct RBTreeNode *p, struct RBTreeNode *l,
   node->key    = k;
   node->data   = d;
   node->c      = c;
+  node->isSen  = s;
 
   return node;
 
@@ -40,7 +41,8 @@ void dest_rbtree_node(struct RBTreeNode *node) {
 }
 
 struct RBTreeNode* init_rbtree(int k, void *d) {
-  struct RBTreeNode *root = init_rbtree_node(NULL, NULL, NULL, k, d, BLACK);
+  struct RBTreeNode *root = init_rbtree_node(NULL, NULL, NULL, k, d, BLACK,
+    false);
   return root;
 }
 
@@ -76,7 +78,8 @@ data.
 **/
 struct RBTreeNode* insert(int k, void *data, struct RBTreeNode **root) {
 
-  struct RBTreeNode *newest = init_rbtree_node(NULL, NULL, NULL, k, data, BLACK);
+  struct RBTreeNode *newest = init_rbtree_node(NULL, NULL, NULL, k, data, BLACK,
+    false);
   struct RBTreeNode *walk = *root;
   struct RBTreeNode *parent = NULL;
 

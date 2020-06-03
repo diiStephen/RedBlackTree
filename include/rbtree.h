@@ -5,6 +5,11 @@
 
 /*
 TODO:
+		1. Need to add support for sentinel node. The RBTree design
+			 only stores data at internal nodes. All previously NULL pointers will
+			 have to be replaced to a reference to a special sentinel node. How is
+			 the sentinel node marked? Informating in the node struct?
+
 
 		2. Add functionality for iterator design pattern. This will make the
 			 traversal algorithms easier. Return an iterator rather than take
@@ -40,6 +45,7 @@ struct RBTreeNode {
   int key;                   /* int key used for ordering data. */
   void *data;                /* void pointer to satelite data.  */
   color_t c;                 /* Current color (red/black) of the node. */
+	bool isSen;								 /* Is this node the sentinel? */
 
 };
 
@@ -47,7 +53,7 @@ struct RBTreeNode {
 
 /* Constructor for Red-Black tree node. */
 struct RBTreeNode* init_rbtree_node(struct RBTreeNode *, struct RBTreeNode *,
-	struct RBTreeNode *, int, void *, color_t);
+	struct RBTreeNode *, int, void *, color_t, bool);
 
 /* Destructor for Red-Black tree node. */
 void dest_rbtree_node(struct RBTreeNode *);
