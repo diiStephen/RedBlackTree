@@ -24,17 +24,20 @@ struct RBTreeNode* init_rbtree_node(struct RBTreeNode *p, struct RBTreeNode *l,
 
 }
 
+/**
+Function for destroying RBTreeNodes. Accepts a pointer
+to a node to be destroyed. The node's satelite data pointer
+must be handled by the caller. The convention here is that the
+data field of the node struct must be assigned to 0 to indicate
+that the data has been handled.
+
+NOTE: There may be memory leaks if the satelite data is not handled properly.
+
+@param node Pointer to node to be destroyed.
+**/
 void dest_rbtree_node(struct RBTreeNode *node) {
-
-  /* Weary of memory leaks here. */
-
   if (node->data == 0) {
-
-    /* Node must have it's data destroyed before destroying the node. */
-    /* Convention is to set the node->data ptr to 0 */
-
     free_rbtree_node(&node);
-
   } else {
     display_error(INV_DELOC);
   }
@@ -50,9 +53,7 @@ NOTE: There may be other references to the same block of data, though. We must
 be careful to avoid any such situation. This may be particuarly relevant to
 the sentinel node where it will be the child of many nodes in the RBT.
 
-@param node Double pointer to RBTreeNode to be freed. 
-}
-
+@param node Double pointer to RBTreeNode to be freed.
 **/
 void free_rbtree_node(struct RBTreeNode **node) {
   if(node != NULL) {
