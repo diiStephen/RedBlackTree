@@ -123,6 +123,8 @@ void* delete_node(struct RBTreeNode **node) {
 Private utility function used in the delete procedure. Reaplaces
 the subtree rooted at node dest with subtree rooted at node src.
 
+NOTE: I suspect there is a memory leak here, i.e. dest.
+
 @param root Root of RB-tree where transplant is taking place.
 @param dest Destination of replacement.
 @param src Source of replacement.
@@ -131,7 +133,7 @@ void transplant(struct RBTreeNode **root, struct RBTreeNode *dest,
   struct RBTreeNode *src) {
 
     if (dest->parent == NULL) {
-      *root = src; // dest is the root. 
+      *root = src; // dest is the root.
     } else if (dest == dest->parent->left) {
       dest->parent->left = src; // dest is the left child of its parent.
     } else {
