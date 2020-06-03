@@ -66,6 +66,16 @@ void testOne() {
   pred = predecessor(result);
   printf("Result: [%p]:%d\nPredecessor: [%p]:%d\n", result, result->key, pred, pred->key);
 
+  printf("Testing delete functions!\n");
+
+  printf("Deleting: 100\n");
+  delete(100, root);
+
+  printf("Deleting -4\n");
+  delete(-4, root);
+
+  printTree(root);
+
 }
 
 void printTree(struct RBTreeNode* root) {
