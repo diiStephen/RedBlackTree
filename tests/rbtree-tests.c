@@ -6,6 +6,7 @@
 
 void testOne();
 void testTwo();
+void testThree(); 
 void printTree(struct RBTreeNode*);
 void nullAction(int);
 void print_node(struct RBTreeNode*);
@@ -17,6 +18,7 @@ int main(int argc, char** argv) {
   printf("Beginning Red-Black Tree Tests!\n");
   //testOne();
   testTwo();
+  testThree();
 
   return 0;
 }
@@ -108,6 +110,16 @@ void testTwo() {
   printTree(root);
 
 }
+
+void testThree() {
+  struct RBTreeNode *root = NULL;
+  int toInsert = 0;
+  root = init_rbtree(toInsert, NULL);
+  for (int i = 1; i <= 5; i++)
+    insert(i, NULL, &root);
+  printTree(root);
+}
+
 
 void printTree(struct RBTreeNode* root) {
 
