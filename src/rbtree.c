@@ -102,9 +102,15 @@ void dest_rbtree(struct RBTreeNode *root) {
 }
 
 /**
-Insert data into the red-black tree. Ordereding is
+Insert data into the RBT. Ordereding is
 given by the integer key associated with the satelite
 data.
+
+New nodes inserted to the RBT are colored RED. The rest of the insert
+procedure is essentially the same as that for a standard BST, however
+NULL pointers are replaced with a reference to the sentinel (obtainable
+as *root->parent here), and an auxillary procedure, to fix any RBT property
+violations, is called at the end.
 
 @param k Key associated with data. Used for searching, ordering, etc.
 @param data Data associated with the node. void* for generic data.
@@ -112,12 +118,16 @@ data.
 **/
 struct RBTreeNode* insert(int k, void *data, struct RBTreeNode **root) {
 
-  struct RBTreeNode *newest = init_rbtree_node(NULL, NULL, NULL, k, data, BLACK, false);
-  struct RBTreeNode *walk = *root;
-  struct RBTreeNode *parent = NULL;
+  // Create new node.
+  struct RBTreeNode *newest =
+    init_rbtree_node(NULL, (*root)->parent, (*root)->parent, k, data, RED, false);
+
+  struct RBTreeNode *s = (*root)->parent; // Reference to sentinel.
+  struct RBTreeNode *walk = *root;      // Walk startes at the root.
+  struct RBTreeNode *parent = (*root)->parent; // Trailing pointer used for insert.
 
   // Find the appropriate spot for the node.
-  while (walk != NULL) {
+  while (walk != s) { //While we haven't reached the sentinel.
     parent = walk;
     if (k < walk->key) {
       walk = walk->left;
@@ -128,7 +138,7 @@ struct RBTreeNode* insert(int k, void *data, struct RBTreeNode **root) {
   newest->parent = parent;
 
   // Update pointers.
-  if (parent == NULL) {
+  if (parent == s) {
     *root = newest; //Tree was empty.
   } else if (k < parent->key) {
     parent->left = newest;
@@ -136,6 +146,7 @@ struct RBTreeNode* insert(int k, void *data, struct RBTreeNode **root) {
     parent->right = newest;
   }
 
+  // Call to rb_insert_fixup
   return newest;
 }
 
@@ -405,7 +416,7 @@ preserves the BST properties.
 right_rotate assumes that node->left != s, the senitnel.
 
 Question: Do I need double pointers here to perform these updates? Pass
-by value vs. pass by reference w.r.t the root pointer, I believe. 
+by value vs. pass by reference w.r.t the root pointer, I believe.
 
 @param root Root of the RBT containing node.
 @node Node of the tree to Right-Rotate.
