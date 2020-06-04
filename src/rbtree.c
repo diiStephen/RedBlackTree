@@ -152,7 +152,7 @@ struct RBTreeNode* insert(int k, void *data, struct RBTreeNode **root) {
     parent->right = newest;
   }
 
-  insert_fixup(root, newest); //Fix any voilations. 
+  insert_fixup(root, newest); //Fix any voilations.
 
   return newest;
 }
@@ -213,13 +213,13 @@ void insert_fixup(struct RBTreeNode **root, struct RBTreeNode *newest) {
 
         if (newest == newest->parent->left) { // Case 5
           newest = newest->parent;
-          left_rotate(root, newest); // Rotate to become case 6. Do we right_rotate?
+          right_rotate(root, newest); // Rotate to become case 6. Do we right_rotate?
         }
 
         // Case 6
         newest->parent->c = BLACK;
         newest->parent->parent->c = RED;
-        right_rotate(root, newest->parent->parent); // left_rotate?
+        left_rotate(root, newest->parent->parent); // left_rotate?
 
       } // End cases 5, 6
 

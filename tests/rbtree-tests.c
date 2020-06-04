@@ -6,7 +6,7 @@
 
 void testOne();
 void testTwo();
-void testThree(); 
+void testThree();
 void printTree(struct RBTreeNode*);
 void nullAction(int);
 void print_node(struct RBTreeNode*);
@@ -112,6 +112,7 @@ void testTwo() {
 }
 
 void testThree() {
+  printf("\nTest 3 starting!\n");
   struct RBTreeNode *root = NULL;
   int toInsert = 0;
   root = init_rbtree(toInsert, NULL);
