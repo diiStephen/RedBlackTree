@@ -152,7 +152,8 @@ struct RBTreeNode* insert(int k, void *data, struct RBTreeNode **root) {
     parent->right = newest;
   }
 
-  // Call to rb_insert_fixup
+  insert_fixup(root, newest); //Fix any voilations. 
+
   return newest;
 }
 
