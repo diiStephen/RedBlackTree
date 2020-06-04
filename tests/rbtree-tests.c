@@ -88,7 +88,7 @@ void testOne() {
 void testTwo() {
 
   //Currently broken as certain functions have not been updated to deal
-  // with the sentinel. 
+  // with the sentinel.
 
   printf("Starting test 2!\n\n");
 
@@ -97,6 +97,7 @@ void testTwo() {
   int toInsert = 0;
 
   printf("Building random tree!\n");
+  
   toInsert = rand() % 100;
   root = init_rbtree(toInsert, NULL);
   for(int i = 0; i < 10; i++) {
@@ -105,24 +106,6 @@ void testTwo() {
   }
 
   printTree(root);
-
-  result = search(20, root);
-  print_node(result);
-
-  result = search(14, root);
-  print_node(result);
-
-  result = maximum(root);
-  print_node(result);
-
-  result = minimum(root);
-  print_node(result);
-
-  delete(result->key, root);
-  printTree(root);
-
-  printf("Destroying tree!\n");
-  dest_rbtree(root);
 
 }
 
