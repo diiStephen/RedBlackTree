@@ -127,8 +127,23 @@ void nullAction(int signo) {
 }
 
 void print_node(struct RBTreeNode* node) {
+
+  int key = 0;
+  color_t clr = BLACK;
+  char* color = NULL;
+
   if (node != NULL) {
-    printf("Node@[%p]: Key = %d\n", (void*)node, node->key);
+
+    key = node->key;
+    clr = node->c;
+
+    if (clr == BLACK)
+      color = "BLACK";
+    else
+      color = "RED";
+      
+    printf("Node@[%p]: Key = %d, Color = %s\n", key, color);
+
   } else {
     printf("Node@[Null]\n");
   }
