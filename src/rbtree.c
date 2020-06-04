@@ -404,7 +404,8 @@ preserves the BST properties.
 
 right_rotate assumes that node->left != s, the senitnel.
 
-Question: Do I need double pointers here to perform these updates? 
+Question: Do I need double pointers here to perform these updates? Pass
+by value vs. pass by reference w.r.t the root pointer, I believe. 
 
 @param root Root of the RBT containing node.
 @node Node of the tree to Right-Rotate.
