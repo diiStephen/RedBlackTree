@@ -97,10 +97,10 @@ void testTwo() {
   int toInsert = 0;
 
   printf("Building random tree!\n");
-  
+
   toInsert = rand() % 100;
   root = init_rbtree(toInsert, NULL);
-  for(int i = 0; i < 10; i++) {
+  for(int i = 0; i < 20; i++) {
     toInsert = rand() % 100;
     insert(toInsert, NULL, &root);
   }
