@@ -167,20 +167,20 @@ violations (See notes for full details).
 **/
 void insert_fixup(struct RBTreeNode **root, struct RBTreeNode *newest) {
 
-  struct RBTreeNode *uncle = NULL // Uncle of newest.
+  struct RBTreeNode *uncle = NULL; // Uncle of newest.
 
-  while(newest->parent->color == RED) { // Violation of IV
+  while(newest->parent->c == RED) { // Violation of IV
 
     // parent is left child of grandparent.
     if (newest->parent == newest->parent->parent->left) {
 
       uncle = newest->parent->parent->right; // Uncle is right child of grandparent.
 
-      if (uncle->color == RED) { // Case 1
+      if (uncle->c == RED) { // Case 1
 
-        newest->parent->color = BLACK;        //Change parent to BLACK.
-        uncle->color = BLACK;                 //Change uncle's color to BLACK.
-        newest->parent->parent->color = RED;  //Grandparent becomes RED.
+        newest->parent->c = BLACK;        //Change parent to BLACK.
+        uncle->c = BLACK;                 //Change uncle's color to BLACK.
+        newest->parent->parent->c = RED;  //Grandparent becomes RED.
         newest = newest->parent->parent;      //Newest violation may now be the grandparent.
 
       } else {
@@ -191,8 +191,8 @@ void insert_fixup(struct RBTreeNode **root, struct RBTreeNode *newest) {
         }
 
         // Case 3
-        newest->parent->color = BLACK; //Note: This terminates the loop.
-        newest->parent->parent->color = RED;
+        newest->parent->c = BLACK; //Note: This terminates the loop.
+        newest->parent->parent->c = RED;
         right_rotate(root, newest->parent->parent);
 
       } // End cases 2, 3
@@ -201,11 +201,11 @@ void insert_fixup(struct RBTreeNode **root, struct RBTreeNode *newest) {
 
       uncle = newest->parent->parent->left; // Uncle is left child of grandparent.
 
-      if (uncle->color == RED) { // Case 4
+      if (uncle->c == RED) { // Case 4
 
-        newest->parent->color = BLACK; // Same idea as above.
-        uncle->color = BLACK;
-        newest->parent->parent->color = RED;
+        newest->parent->c = BLACK; // Same idea as above.
+        uncle->c = BLACK;
+        newest->parent->parent->c = RED;
         newest = newest->parent->parent; // Newest violation may now be the grandparent.
 
       } else {
@@ -216,8 +216,8 @@ void insert_fixup(struct RBTreeNode **root, struct RBTreeNode *newest) {
         }
 
         // Case 6
-        newest->parent->color = BLACK;
-        newest->parent->parent->color = RED;
+        newest->parent->c = BLACK;
+        newest->parent->parent->c = RED;
         right_rotate(root, newest->parent->parent); // left_rotate?
 
       } // End cases 5, 6
@@ -225,7 +225,7 @@ void insert_fixup(struct RBTreeNode **root, struct RBTreeNode *newest) {
     } // End parent is right child of grandparent.
   } // Corrected property IV violation.
 
-  (*root)->color = BLACK; //Correct property II violation. 
+  (*root)->c = BLACK; //Correct property II violation.
 
 }
 
