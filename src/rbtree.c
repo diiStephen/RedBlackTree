@@ -75,8 +75,14 @@ NOTE: All operations will need to take into account the sentinel node.
 @return Pointer to root node of the rbtree.
 **/
 struct RBTreeNode* init_rbtree(int k, void *d) {
-  struct RBTreeNode *sentinel = init_rbtree_node(NULL, NULL, NULL, 0, NULL, BLACK, true); //Allocate sentinel node.
-  struct RBTreeNode *root = init_rbtree_node(sentinel, NULL, NULL, k, d, BLACK, false);   //Allocate root node with root->p = sentinel.
+
+  //Allocate sentinel node.
+  struct RBTreeNode *sentinel =
+    init_rbtree_node(NULL, NULL, NULL, 0, NULL, BLACK, true);
+
+  //Allocate root node with parent,left,right = sentinel.
+  struct RBTreeNode *root =
+    init_rbtree_node(sentinel, sentinel, sentinel, k, d, BLACK, false);
   return root;
 }
 
@@ -135,7 +141,7 @@ struct RBTreeNode* insert(int k, void *data, struct RBTreeNode **root) {
       walk = walk->right;
     }
   }
-  newest->parent = parent;
+  newest->parent = parent; //Correctly deals with the sentinel.
 
   // Update pointers.
   if (parent == s) {
