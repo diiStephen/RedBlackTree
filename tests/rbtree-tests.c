@@ -100,7 +100,7 @@ void testTwo() {
 
   toInsert = rand() % 100;
   root = init_rbtree(toInsert, NULL);
-  for(int i = 0; i < 20; i++) {
+  for(int i = 0; i < 5; i++) {
     toInsert = rand() % 100;
     insert(toInsert, NULL, &root);
   }
@@ -115,7 +115,7 @@ void printTree(struct RBTreeNode* root) {
 
   if (root != NULL) {
     printTree(root->left);
-    printf("[%p] Key = %d\n", (void*)root, root->key);
+    print_node(root);
     printTree(root->right);
 
   }
@@ -141,8 +141,8 @@ void print_node(struct RBTreeNode* node) {
       color = "BLACK";
     else
       color = "RED";
-      
-    printf("Node@[%p]: Key = %d, Color = %s\n", key, color);
+
+    printf("Node@[%p]: Key = %d, Color = %s\n", (void*)node, key, color);
 
   } else {
     printf("Node@[Null]\n");
