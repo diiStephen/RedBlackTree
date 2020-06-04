@@ -58,7 +58,7 @@ struct RBTreeNode* init_rbtree_node(struct RBTreeNode *, struct RBTreeNode *,
 /* Destructor for Red-Black tree node. */
 void dest_rbtree_node(struct RBTreeNode *);
 
-/* Specialized free function to avoid dangling pointers. */ 
+/* Specialized free function to avoid dangling pointers. */
 void free_rbtree_node(struct RBTreeNode **);
 
 /* Constructor for Red-Black tree itself. */
@@ -102,5 +102,8 @@ struct RBTreeNode* successor(struct RBTreeNode *);
 
 /* Validate nodes accepted as parameters. */
 void validate(struct RBTreeNode *, bool);
+
+/* Left-Rotate operation. */ 
+void left_rotate(struct RBTreeNode **, struct RBTreeNode *);
 
 #endif

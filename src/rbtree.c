@@ -360,3 +360,38 @@ void validate(struct RBTreeNode *node, bool chkNull) {
       break;
   }
 }
+
+/**
+Implementation of the Left-Rotate(T, x) algorithm. Used for re-balancing
+the RBT after update operations. This operation is a structural update, i.e.
+by re-arranging pointers. The running time is O(1). Furthermore, a left-rotate
+preserves the BST properties.
+
+left_rotate assumes that node->right != s, the senitnel.
+
+@param root Root of the RBT containing node.
+@node Node of the tree to Left-Rotate.
+**/
+void left_rotate(struct RBTreeNode **root, struct RBTreeNode *node) {
+
+  struct RBTreeNode *r = node->right; // r replaces node in location.
+
+  node->right = r->left; // Left subtree of r becomes node's right subtree.
+
+  if (r->left->isSen == false) // Update parent pointer of r's left child.
+    r->left->parent = node;
+
+  r->parent = node->parent; // r's parent becomes x's former parent.
+
+  if (node->parent->isSen == true) {        //Node was root.
+    *root = r;
+  } else if (node == node->parent->left) {  // Node is a left child.
+    node->parent->left = r;
+  } else {                                  // Node must be the right child.
+    node->parent->right = r;
+  }
+
+  r->left = node; // Place node in it's proper place.
+  node->parent = r;
+
+}
