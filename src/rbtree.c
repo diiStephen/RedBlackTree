@@ -411,5 +411,22 @@ void right_rotate(struct RBTreeNode **root, struct RBTreeNode *node) {
 
   struct RBTreeNode *r = node->left; // r places node in at node's position.
 
+  node->left = r->right; //Left subtree of node becomes right subtree of r.
+
+  if (r->right->isSen == false) //s.p is meaningless here.
+    r->right->parent = node;
+
+  r->parent = node->parent; // r must take node's place.
+
+  if (node->parent->isSen == true) { // node is T's root.
+    *root = r;
+  } else if (node == node->parent->left) { //node is a left child.
+    node->parent->left = r;
+  } else {
+    node->parent->right = r; // node is a right child.
+  }
+
+  r->right = node;
+  node->parent = r; 
 
 }
