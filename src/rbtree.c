@@ -166,7 +166,66 @@ violations (See notes for full details).
 @param newest New node inserted into the tree which violate RBT properties.
 **/
 void insert_fixup(struct RBTreeNode **root, struct RBTreeNode *newest) {
-  
+
+  struct RBTreeNode *uncle = NULL // Uncle of newest.
+
+  while(newest->parent->color == RED) { // Violation of IV
+
+    // parent is left child of grandparent.
+    if (newest->parent == newest->parent->parent->left) {
+
+      uncle = newest->parent->parent->right; // Uncle is right child of grandparent.
+
+      if (uncle->color == RED) { // Case 1
+
+        newest->parent->color = BLACK;        //Change parent to BLACK.
+        uncle->color = BLACK;                 //Change uncle's color to BLACK.
+        newest->parent->parent->color = RED;  //Grandparent becomes RED.
+        newest = newest->parent->parent;      //Newest violation may now be the grandparent.
+
+      } else {
+
+        if (newest == newest->parent->right) { // Case 2
+          newest = newest->parent;
+          left_rotate(root, newest); //Rotate to become Case 3.
+        }
+
+        // Case 3
+        newest->parent->color = BLACK; //Note: This terminates the loop.
+        newest->parent->parent->color = RED;
+        right_rotate(root, newest->parent->parent);
+
+      } // End cases 2, 3
+
+    } else { // parent is right child of grandparent.
+
+      uncle = newest->parent->parent->left; // Uncle is left child of grandparent.
+
+      if (uncle->color == RED) { // Case 4
+
+        newest->parent->color = BLACK; // Same idea as above.
+        uncle->color = BLACK;
+        newest->parent->parent->color = RED;
+        newest = newest->parent->parent; // Newest violation may now be the grandparent.
+
+      } else {
+
+        if (newest == newest->parent->left) { // Case 5
+          newest = newest->parent;
+          left_rotate(root, newest); // Rotate to become case 6. Do we right_rotate?
+        }
+
+        // Case 6
+        newest->parent->color = BLACK;
+        newest->parent->parent->color = RED;
+        right_rotate(root, newest->parent->parent); // left_rotate?
+
+      } // End cases 5, 6
+
+    } // End parent is right child of grandparent.
+  } // Corrected property IV violation.
+
+  (*root)->color = BLACK; //Correct property II violation. 
 
 }
 
