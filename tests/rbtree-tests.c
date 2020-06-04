@@ -86,6 +86,10 @@ void testOne() {
 }
 
 void testTwo() {
+
+  //Currently broken as certain functions have not been updated to deal
+  // with the sentinel. 
+
   printf("Starting test 2!\n\n");
 
   struct RBTreeNode *root   = NULL;
