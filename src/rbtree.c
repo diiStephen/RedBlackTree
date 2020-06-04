@@ -157,6 +157,20 @@ struct RBTreeNode* insert(int k, void *data, struct RBTreeNode **root) {
 }
 
 /**
+Correct any violations of the RBT properties after performing
+a standard BST insert. There are only two possible property
+violations (See notes for full details).
+
+
+@param root Root of RBT where insertion has taken place.
+@param newest New node inserted into the tree which violate RBT properties.
+**/
+void insert_fixup(struct RBTreeNode **root, struct RBTreeNode *newest) {
+  
+
+}
+
+/**
 Public delete function. Removes a node with the given key
 in RB-tree rooted at *root. First the function finds a node
 with the given key, then calls the delete_node function on

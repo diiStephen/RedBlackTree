@@ -72,6 +72,9 @@ void dest_rbtree(struct RBTreeNode *);
 /* Insertion function. */
 struct RBTreeNode* insert(int, void *, struct RBTreeNode **);
 
+/* Correct RBT properties after inserts. */
+void insert_fixup(struct RBTreNode **, struct RBTreeNode *);
+
 /* Delete function - public. */
 void* delete(int, struct RBTreeNode *);
 
