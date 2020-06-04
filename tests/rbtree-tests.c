@@ -113,7 +113,7 @@ void printTree(struct RBTreeNode* root) {
 
   /* Inorder traversal of the tree. */
 
-  if (root != NULL) {
+  if (root->isSen != true) {
     printTree(root->left);
     print_node(root);
     printTree(root->right);
