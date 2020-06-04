@@ -374,7 +374,7 @@ left_rotate assumes that node->right != s, the senitnel.
 **/
 void left_rotate(struct RBTreeNode **root, struct RBTreeNode *node) {
 
-  struct RBTreeNode *r = node->right; // r replaces node in location.
+  struct RBTreeNode *r = node->right; // r replaces node at node's position.
 
   node->right = r->left; // Left subtree of r becomes node's right subtree.
 
@@ -393,5 +393,23 @@ void left_rotate(struct RBTreeNode **root, struct RBTreeNode *node) {
 
   r->left = node; // Place node in it's proper place.
   node->parent = r;
+
+}
+
+/**
+Implementation of the Right-Rotate(T, x) algorithm. Used for re-balancing
+the RBT after update operations. This operation is a structural update, i.e.
+by re-arranging pointers. The running time is O(1). Furthermore, a right-rotate
+preserves the BST properties.
+
+right_rotate assumes that node->left != s, the senitnel.
+
+@param root Root of the RBT containing node.
+@node Node of the tree to Right-Rotate.
+**/
+void right_rotate(struct RBTreeNode **root, struct RBTreeNode *node) {
+
+  struct RBTreeNode *r = node->left; // r places node in at node's position.
+
 
 }

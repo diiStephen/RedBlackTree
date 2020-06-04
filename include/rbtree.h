@@ -103,7 +103,10 @@ struct RBTreeNode* successor(struct RBTreeNode *);
 /* Validate nodes accepted as parameters. */
 void validate(struct RBTreeNode *, bool);
 
-/* Left-Rotate operation. */ 
+/* Left-Rotate operation. */
 void left_rotate(struct RBTreeNode **, struct RBTreeNode *);
+
+/* Right-Rotate operation. */
+void right_rotate(struct RBTreeNode **, struct RBTreeNode *);
 
 #endif
