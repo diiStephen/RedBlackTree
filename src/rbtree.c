@@ -404,6 +404,8 @@ preserves the BST properties.
 
 right_rotate assumes that node->left != s, the senitnel.
 
+Question: Do I need double pointers here to perform these updates? 
+
 @param root Root of the RBT containing node.
 @node Node of the tree to Right-Rotate.
 **/
@@ -427,6 +429,6 @@ void right_rotate(struct RBTreeNode **root, struct RBTreeNode *node) {
   }
 
   r->right = node;
-  node->parent = r; 
+  node->parent = r;
 
 }
