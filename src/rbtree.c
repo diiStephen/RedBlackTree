@@ -359,7 +359,7 @@ struct RBTreeNode* search(int key, struct RBTreeNode *root) {
   struct RBTreeNode *walk = root;
 
   if (walk->isSen == true) {
-    return NULL; // Don't return the sentinel. 
+    return NULL; // Don't return the sentinel.
   } else if (key < walk->key) {
     search(key, walk->left);
   } else if (key > walk->key) {
