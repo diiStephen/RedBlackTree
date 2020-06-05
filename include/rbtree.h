@@ -81,6 +81,9 @@ void* delete(int, struct RBTreeNode *);
 /* Delete function - private. */
 void* delete_node(struct RBTreeNode **, struct RBTreeNode *);
 
+/* Correct RBT properties after deletion. */
+void delete_fixup(struct RBTreeNode **, struct RBTreeNode *);
+
 /* Transplant utility function - private. */
 void transplant(struct RBTreeNode **, struct RBTreeNode *, struct RBTreeNode *);
 
