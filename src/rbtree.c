@@ -261,24 +261,45 @@ from the tree.
 **/
 void* delete_node(struct RBTreeNode **root, struct RBTreeNode *node) {
 
-  struct RBTreeNode *deleted = node; //Save pointer to the node.
-  struct RBTreeNode *succ    = NULL; //ptr to sucessor of node.
-  void *response             = NULL; //ptr to hold the response.
+  struct RBTreeNode *s          = (*root)->parent; // Sentinel.
+  struct RBTreeNode *deleted    = node;  //Save pointer to the node.
+  struct RBTreeNode *replace    = NULL;  //Node removed or moved in T.
+  struct RBTreeNode *moved      = NULL;  //Node moved to replace's position.
+  void *response                = NULL;  //ptr to hold the response.
+  color_t originalColor         = BLACK; //Original color of replace.
 
-  if (node->left == NULL) {
+  replace = node;
+  originlColor = replace->c;
+
+  if (node->left == s) {
+
+    moved = node->right;
     transplant(root, node, node->right); // Case I
-  } else if (node->right == NULL) {
+
+  } else if (node->right == s) {
+
+    moved = node->left;
     transplant(root, node, node->left); // Case II
+
   } else { // Cases III, IV
-    succ = minimum(node->right);
-    if (succ->parent != node) {
-      transplant(root, succ, succ->right);
-      succ->right = node->right;
-      succ->right->parent = succ;
+
+    replace = minimum(node->right);
+    originalColor = replace->c;
+    moved = replace->right; // Note, replace has no left child.
+
+    if (replace->parent == node) {
+      moved->parent = replace; // Note: moved may be s, the sentinel.
+    } else {
+      transplant(root, replace, replace->right);
+      replace->right = node->right;
+      replace->right->parent = replace;
     }
-    transplant(root, node, succ);
-    succ->left = node->left;
-    succ->left->parent = succ;
+
+    transplant(root, node, replace);
+    replace->left = node->left;
+    replace->left->parent = replace;
+    replace->c = node->c;
+
   }
 
   deleted->parent = deleted; //Convention for deleted node.
@@ -286,11 +307,12 @@ void* delete_node(struct RBTreeNode **root, struct RBTreeNode *node) {
   deleted->left = NULL;
   response = deleted->data;
   deleted->data = 0; // Convention for deleted node.
-
   dest_rbtree_node(deleted); // Delete the memory for the node.
 
-  return response;
+  if (originalColor == BLACK)
+    //RBT-Delete-Fixup(root, moved);
 
+  return response;
 }
 
 /**
