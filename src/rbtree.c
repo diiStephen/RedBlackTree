@@ -290,7 +290,7 @@ void* delete_node(struct RBTreeNode **root, struct RBTreeNode *node) {
 
     if (replace->parent == node) { // Case III-A, replace = node->right.
       moved->parent = replace; // Note: moved may be s, the sentinel.
-    } else { // Case III-B, replace != node->right, but is contained in the subtree root at node->right. 
+    } else { // Case III-B, replace != node->right, but is contained in the subtree root at node->right.
       transplant(root, replace, replace->right);
       replace->right = node->right;
       replace->right->parent = replace;
@@ -310,7 +310,7 @@ void* delete_node(struct RBTreeNode **root, struct RBTreeNode *node) {
   deleted->data = 0; // Convention for deleted node.
   dest_rbtree_node(deleted); // Delete the memory for the node.
 
-  if (originalColor == BLACK)
+  //if (originalColor == BLACK)
     //RBT-Delete-Fixup(root, moved);
 
   return response;
@@ -358,8 +358,8 @@ struct RBTreeNode* search(int key, struct RBTreeNode *root) {
 
   struct RBTreeNode *walk = root;
 
-  if (walk == NULL) {
-    return NULL;
+  if (walk->isSen == true) {
+    return NULL; // Don't return the sentinel. 
   } else if (key < walk->key) {
     search(key, walk->left);
   } else if (key > walk->key) {
@@ -379,7 +379,7 @@ empty.
 **/
 struct RBTreeNode* minimum(struct RBTreeNode *root) {
   validate(root, false);
-  if (root == NULL || root->left == NULL) // Short circuting.
+  if (root->isSen == true || root->left->isSen == true) // Short circuting.
     return root;
   else
     minimum(root->left);
@@ -395,7 +395,7 @@ empty.
 **/
 struct RBTreeNode* maximum(struct RBTreeNode *root) {
   validate(root, false);
-  if (root == NULL || root->right == NULL) // Short circuting.
+  if (root->isSen == true || root->right->isSen == true) // Short circuting.
     return root;
   else
     maximum(root->right);
