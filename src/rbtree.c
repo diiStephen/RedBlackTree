@@ -306,7 +306,9 @@ NOTE: I suspect there is a memory leak here, i.e. dest.
 void transplant(struct RBTreeNode **root, struct RBTreeNode *dest,
   struct RBTreeNode *src) {
 
-    if (dest->parent == NULL) {
+    struct RBTreeNode *s = (*root)->parent; //Sentinel.
+
+    if (dest->parent == s) {
       *root = src; // dest is the root.
     } else if (dest == dest->parent->left) {
       dest->parent->left = src; // dest is the left child of its parent.
@@ -314,9 +316,8 @@ void transplant(struct RBTreeNode **root, struct RBTreeNode *dest,
       dest->parent->right = src; // dest is the right child of its parent.
     }
 
-    if (src != NULL) {
-      src->parent = dest->parent; // Src parent pointer must be updated.
-    }
+    // Unconditional -- the sentinel makes the Null check unnecessary.
+    src->parent = dest->parent; // src parent ptr is updated.
 
   }
 
