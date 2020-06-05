@@ -269,7 +269,7 @@ void* delete_node(struct RBTreeNode **root, struct RBTreeNode *node) {
   color_t originalColor         = BLACK; //Original color of replace.
 
   replace = node;
-  originlColor = replace->c;
+  originalColor = replace->c;
 
   if (node->left == s) {
 
