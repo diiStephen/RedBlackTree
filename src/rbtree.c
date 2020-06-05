@@ -268,28 +268,29 @@ void* delete_node(struct RBTreeNode **root, struct RBTreeNode *node) {
   void *response                = NULL;  //ptr to hold the response.
   color_t originalColor         = BLACK; //Original color of replace.
 
+  // Replace is either node to be deleted, or node to be moved.
   replace = node;
   originalColor = replace->c;
 
-  if (node->left == s) {
+  if (node->left == s) { // One child on the right, or none.
 
     moved = node->right;
     transplant(root, node, node->right); // Case I
 
-  } else if (node->right == s) {
+  } else if (node->right == s) { // One child on the left.
 
     moved = node->left;
     transplant(root, node, node->left); // Case II
 
-  } else { // Cases III, IV
+  } else { // Cases III  i.e. two children.
 
-    replace = minimum(node->right);
-    originalColor = replace->c;
-    moved = replace->right; // Note, replace has no left child.
+    replace = minimum(node->right); // Node will be replaced with its successor.
+    originalColor = replace->c;     // We need to save the original color of the node we're moving.
+    moved = replace->right;         // Note, replace has no left child. This will be moved into replace's position.
 
-    if (replace->parent == node) {
+    if (replace->parent == node) { // Case III-A, replace = node->right.
       moved->parent = replace; // Note: moved may be s, the sentinel.
-    } else {
+    } else { // Case III-B, replace != node->right, but is contained in the subtree root at node->right. 
       transplant(root, replace, replace->right);
       replace->right = node->right;
       replace->right->parent = replace;
