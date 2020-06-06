@@ -14,6 +14,7 @@ INCLUDE    = -I $(INCLUDEDIR)
 SRC        = src
 NAME       = rbtree
 TNAME      = rbtree-tests
+ENAME      = test-engine
 BUILD      = build
 
 default: $(TARGET)
@@ -26,6 +27,16 @@ all: rbtree.o
 test: rbtree-tests.o rbtree.o errors.o
 	@echo 'Starting linking process for test files...'
 	$(CC) rbtree-tests.o rbtree.o errors.o -o $(BUILD)/$(TNAME)
+	@echo '...done!'
+
+engine: test-engine.o rbtree.o errors.o
+	@echo 'Linking test engine program...'
+	$(CC) test-engine.o rbtree.o errors.o -o $(BUILD)/$(ENAME)
+	@echo '...done!'
+
+test-engine.o: test-engine.c rbtree.h
+	@echo 'Building test-engine module...'
+	$(CC) $(CFLAGS) $(INCLUDE) $<
 	@echo '...done!'
 
 rbtree-tests.o: rbtree-tests.c rbtree.h

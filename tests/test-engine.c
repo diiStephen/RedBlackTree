@@ -3,6 +3,9 @@
 #include<stdlib.h>
 #include<string.h>
 
+#define CMD_L 4
+#define EXT_F 1
+
 /*
 
 Test engine for rbtree library. Commands accepted from stdin
@@ -22,7 +25,7 @@ Accepted commads and their formats:
 
 4. max -- display max key in the tree.
 
-5. min -- display min key in the tree. 
+5. min -- display min key in the tree.
 
 6. end -- shutdown the test program.
 
@@ -31,8 +34,18 @@ Accepted commads and their formats:
 int main(int argc, char** argv) {
 
   printf("Starting test engine!\n");
-  char* cmd =
+  char* cmd = malloc(sizeof(char)*CMD_L);
+  if (cmd == NULL) {
+    fprintf(stderr, "Error allocating memory for cmd buffer!\n");
+    exit(EXT_F);
+  }
+  int param = 0;
 
+  printf("[C]: ");
+  scanf("%s %d", cmd, &param);
+  while(strcmp(cmd, "end")) {
+    printf("Commands: %s\n", cmd);
+  }
 
   return 0;
 }
