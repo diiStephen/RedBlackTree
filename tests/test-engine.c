@@ -140,9 +140,9 @@ void exec_prt(struct RBTreeNode* root) {
 // Inorder traversal.
 void inorder(struct RBTreeNode* root) {
   if (root->isSen != true) {
-    exec_prt(root->left);
+    inorder(root->left);
     print_node(root);
-    exec_prt(root->right);
+    inorder(root->right);
   }
 }
 
