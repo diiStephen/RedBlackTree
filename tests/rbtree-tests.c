@@ -4,9 +4,16 @@
 #include<stdlib.h>
 #include<time.h>
 
+/**
+Temporary test module. This will be replaced with something
+more robust once the core functionality of the RBT has been
+completed. 
+**/
+
 void testOne();
 void testTwo();
 void testThree();
+void testFour();
 void printTree(struct RBTreeNode*);
 void nullAction(int);
 void print_node(struct RBTreeNode*);
@@ -19,6 +26,7 @@ int main(int argc, char** argv) {
   //testOne();
   testTwo();
   testThree();
+  testFour();
 
   return 0;
 }
@@ -121,6 +129,21 @@ void testThree() {
   printTree(root);
 }
 
+void testFour() {
+
+  printf("\nTest 4 starting!\n");
+  struct RBTreeNode *root = NULL;
+  int ins = 0;
+  root = init_rbtree(ins, NULL);
+  insert(10, NULL, &root);
+  insert(-3, NULL, &root);
+  insert(12, NULL, &root);
+  insert(-100, NULL, &root);
+  insert(18, NULL, &root);
+  search_and_delete(root, -3);
+  search_and_delete(root, 12);
+
+}
 
 void printTree(struct RBTreeNode* root) {
 
