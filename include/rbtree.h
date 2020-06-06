@@ -73,7 +73,7 @@ void dest_rbtree(struct RBTreeNode *);
 /****** UPDATE FUNCTIONS ******/
 
 /* Insertion function. */
-struct RBTreeNode* insert(int, void *, struct RBTreeNode **);
+struct RBTreeNode* insert(struct RBTreeNode **, int, void *);
 
 /* Correct RBT properties after inserts. */
 void insert_fixup(struct RBTreeNode **, struct RBTreeNode *);

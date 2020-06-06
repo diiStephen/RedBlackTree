@@ -122,7 +122,7 @@ violations, is called at the end.
 @param data Data associated with the node. void* for generic data.
 @return Pointer to the new node inserted into the tree.
 **/
-struct RBTreeNode* insert(int k, void *data, struct RBTreeNode **root) {
+struct RBTreeNode* insert(struct RBTreeNode **root, int k, void *data) {
 
   // Create new node.
   struct RBTreeNode *newest =
