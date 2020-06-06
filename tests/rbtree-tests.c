@@ -7,7 +7,7 @@
 /**
 Temporary test module. This will be replaced with something
 more robust once the core functionality of the RBT has been
-completed. 
+completed.
 **/
 
 void testOne();
@@ -142,6 +142,7 @@ void testFour() {
   insert(18, NULL, &root);
   search_and_delete(root, -3);
   search_and_delete(root, 12);
+  printTee(root);
 
 }
 
