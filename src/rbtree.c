@@ -318,10 +318,9 @@ void* delete_node(struct RBTreeNode **root, struct RBTreeNode *node) {
   response = deleted->data;
   deleted->data = 0; // Convention for deleted node.
 
-  //dest_rbtree_node(deleted); Let the user handle it, actually.
-
-  //if (originalColor == BLACK)
-    //RBT-Delete-Fixup(root, moved);
+  // Fix any RBT property violations. 
+  if (originalColor == BLACK)
+    delete_fixup(root, moved);
 
   return response;
 }
@@ -421,7 +420,7 @@ void delete_fixup(struct RBTreeNode **root, struct RBTreeNode *dblack) {
 
   } // End while
 
-  dblack->c = BLACK; // Remove red-black, double black, or the other violations. 
+  dblack->c = BLACK; // Remove red-black, double black, or the other violations.
 
 }
 
