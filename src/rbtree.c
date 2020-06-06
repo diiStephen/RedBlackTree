@@ -327,6 +327,15 @@ void* delete_node(struct RBTreeNode **root, struct RBTreeNode *node) {
 }
 
 /**
+Function for correcting RBT-property violations after performing
+a deletion. 
+
+**/
+void delete_fixup(struct RBTreeNode **root, struct RBTreeNode *x) {
+
+}
+
+/**
 Private utility function used in the delete procedure. Reaplaces
 the subtree rooted at node dest with subtree rooted at node src.
 
