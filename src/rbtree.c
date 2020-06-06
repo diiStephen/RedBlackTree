@@ -328,9 +328,11 @@ void* delete_node(struct RBTreeNode **root, struct RBTreeNode *node) {
 /**
 Function for correcting RBT-property violations after performing
 a deletion. Cases 1 - 8 depend on the color of the sibling of dblack
-and the color of its children.
+and the color of its children. See included notes for full description
+of the cases handled by this algorithm.
 
-@dblack Node with violation. In the while loop, dblack always indicates
+@param root Root of the RBT.
+@param dblack Node with violation. In the while loop, dblack always indicates
 a "double" black node.
 **/
 void delete_fixup(struct RBTreeNode **root, struct RBTreeNode *dblack) {
@@ -379,7 +381,7 @@ void delete_fixup(struct RBTreeNode **root, struct RBTreeNode *dblack) {
 
     } else { // Sibling must be on the LEFT.
 
-      // This case is the mirror image of the above case. Replace left and right everywhere.
+      // Mirror image of the above case. Replace left and right everywhere.
 
       sibling = dblack->parent->left; // Get the sibling.
 
