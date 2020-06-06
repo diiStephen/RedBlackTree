@@ -142,7 +142,7 @@ void testFour() {
   insert(18, NULL, &root);
   search_and_delete(root, -3);
   search_and_delete(root, 12);
-  printTee(root);
+  printTree(root);
 
 }
 
