@@ -328,10 +328,100 @@ void* delete_node(struct RBTreeNode **root, struct RBTreeNode *node) {
 
 /**
 Function for correcting RBT-property violations after performing
-a deletion. 
+a deletion. Cases 1 - 8 depend on the color of the sibling of dblack
+and the color of its children.
 
+@dblack Node with violation. In the while loop, dblack always indicates
+a "double" black node.
 **/
-void delete_fixup(struct RBTreeNode **root, struct RBTreeNode *x) {
+void delete_fixup(struct RBTreeNode **root, struct RBTreeNode *dblack) {
+
+  struct RBTreeNode *sibling = NULL; // Sibling of dblack in while loop.
+
+  while(dblack != *root && dblack->c == BLACK) {
+
+    if (dblack == dblack->parent->left) { // Sibling must be on the RIGHT.
+
+      sibling = dlback->parent->right; // Get the sibling.
+
+      if (sibling->c == RED) { // Case 1 -> Case 2, 3, or 4.
+
+        sibling->c = BLACK;
+        dblack->parent->c = RED;
+        left_rotate(root, dblack->parent);
+        sibling = dblack->parent->right;
+
+      }
+
+      if (sibling->left->c == BLACK && sibling->right->c == BLACK) { // Case 2
+
+        sibling->c = RED;
+        dblack = dblack->parent;
+
+      } else {
+
+        if (sibling->right->c == BLACK) { // Case 3 -> Case 4
+
+          sibling->left->c = BLACK;
+          sibling->c = RED;
+          right_rotate(root, sibling);
+          sibling = dblack->parent->right;
+
+        }
+
+        // Case 4
+        sibling->c = dblack->parent->c;
+        dblack->parent->c = BLACK;
+        sibling->right->c = BLACK;
+        left_rotate(root, dblack->parent);
+        dblack = *root;
+
+      }
+
+    } else { // Sibling must be on the LEFT.
+
+      // This case is the mirror image of the above case. Replace left and right everywhere.
+
+      sibling = dblack->parent->left; // Get the sibling.
+
+      if (sibling->c == RED) { // Case 5 -> Case 6, 7, 8
+
+        sibling->c = BLACK;
+        dblack->parent->c = RED;
+        right_rotate(root, dblack->parent);
+        sibling = dblack->parent->left;
+
+      }
+
+      if (sibling->right->c == BLACK && sibling->left->c == BLACK) { // Case 6
+
+        dblack->c = RED;
+        dblack = dblack->parent;
+
+      } else {
+
+        if (sibling->left->color == BLACK) { // Case 7 -> Case 8
+
+          sibling->right->c = BLACK;
+          sibling->c = RED;
+          left_rotate(root, sibling);
+          sibling = dblack->parent->left;
+
+        }
+
+        sibling->c = dblack->parent->c;
+        dblack->parent->c = BLACK;
+        dblack->left->c = BLACK;
+        right_rotate(root, dblack->parent);
+        dblack = *root;
+
+      }
+
+    } // End left sibling case.
+
+  } // End while
+
+  dblack->c = BLACK; // Remove red-black, double black, or the other violations. 
 
 }
 
