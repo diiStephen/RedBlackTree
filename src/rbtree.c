@@ -318,7 +318,8 @@ void* delete_node(struct RBTreeNode **root, struct RBTreeNode *node) {
   response = deleted->data;
   deleted->data = 0; // Convention for deleted node.
 
-  // Fix any RBT property violations.
+  // Fix any RBT property violations. Properties can only be breached if
+  // originalColor is BLACk.
   if (originalColor == BLACK)
     delete_fixup(root, moved);
 
