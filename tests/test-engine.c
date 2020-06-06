@@ -39,7 +39,7 @@ Accepted commads and their formats:
   do{\
     printf("[C]: ");\
     scanf("%s", cmd);\
-    if (strcmp(cmd,"end") != 0) {\
+    if (strcmp(cmd,"end") != 0 && strcmp(cmd,"prt") != 0) {\
       scanf("%d", &param);\
     }\
   } while (0)
@@ -67,6 +67,7 @@ Accepted commads and their formats:
 void exec_ins(struct RBTreeNode **, int);
 void exec_del(struct RBTreeNode *, int);
 void exec_srh(struct RBTreeNode *, int);
+void exec_prt(struct RBTreeNode *);
 
 int main(int argc, char** argv) {
 
@@ -91,6 +92,8 @@ int main(int argc, char** argv) {
       exec_del(root, param);
     } else if (strcmp(cmd,"srh") == 0) {
       exec_srh(root, param);
+    } else if (strcmp(cmd,"prt") == 0) {
+      exec_prt(root);
     } else {
       printf("Unreconized.\n");
     }
@@ -118,4 +121,13 @@ void exec_srh(struct RBTreeNode *root, int p) {
     printf("Search failed.\n");
   else
     print_node(res);
+}
+
+// Inorder traversal.
+void exec_prt(struct RBTreeNode* root) {
+  if (root->isSen != true) {
+    exec_prt(root->left);
+    print_node(root);
+    exec_prt(root->right);
+  }
 }
