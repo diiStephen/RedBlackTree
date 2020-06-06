@@ -21,6 +21,8 @@ Accepted commads and their formats:
 
 6. prt -- print tree in-order.
 
+7. rot -- print details of root node.
+
 7. end -- shutdown the test program.
 
 */
@@ -39,7 +41,7 @@ Accepted commads and their formats:
   do{\
     printf("[C]: ");\
     scanf("%s", cmd);\
-    if (strcmp(cmd,"end") != 0 && strcmp(cmd,"prt") != 0) {\
+    if (strcmp(cmd,"end") != 0 && strcmp(cmd,"prt") != 0 && strcmp(cmd,"rot") != 0) {\
       scanf("%d", &param);\
     }\
   } while (0)
@@ -68,6 +70,8 @@ void exec_ins(struct RBTreeNode **, int);
 void exec_del(struct RBTreeNode *, int);
 void exec_srh(struct RBTreeNode *, int);
 void exec_prt(struct RBTreeNode *);
+void inorder(struct RBTreeNode *);
+void exec_rot(struct RBTreeNode *);
 
 int main(int argc, char** argv) {
 
@@ -94,6 +98,8 @@ int main(int argc, char** argv) {
       exec_srh(root, param);
     } else if (strcmp(cmd,"prt") == 0) {
       exec_prt(root);
+    } else if (strcmp(cmd,"rot") == 0) {
+      exec_rot(root);
     } else {
       printf("Unreconized.\n");
     }
@@ -123,11 +129,26 @@ void exec_srh(struct RBTreeNode *root, int p) {
     print_node(res);
 }
 
-// Inorder traversal.
+
 void exec_prt(struct RBTreeNode* root) {
+  if(root != NULL)
+    inorder(root);
+  else
+    printf("Empty tree!\n");
+}
+
+// Inorder traversal.
+void inorder(struct RBTreeNode* root) {
   if (root->isSen != true) {
     exec_prt(root->left);
     print_node(root);
     exec_prt(root->right);
   }
+}
+
+void exec_rot(struct RBTreeNode *root) {
+  if (root == NULL)
+    printf("Empty tree!\n");
+  else
+    print_node(root);
 }
