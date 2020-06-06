@@ -318,7 +318,7 @@ void* delete_node(struct RBTreeNode **root, struct RBTreeNode *node) {
   response = deleted->data;
   deleted->data = 0; // Convention for deleted node.
 
-  // Fix any RBT property violations. 
+  // Fix any RBT property violations.
   if (originalColor == BLACK)
     delete_fixup(root, moved);
 
@@ -341,7 +341,7 @@ void delete_fixup(struct RBTreeNode **root, struct RBTreeNode *dblack) {
 
     if (dblack == dblack->parent->left) { // Sibling must be on the RIGHT.
 
-      sibling = dlback->parent->right; // Get the sibling.
+      sibling = dblack->parent->right; // Get the sibling.
 
       if (sibling->c == RED) { // Case 1 -> Case 2, 3, or 4.
 
@@ -399,7 +399,7 @@ void delete_fixup(struct RBTreeNode **root, struct RBTreeNode *dblack) {
 
       } else {
 
-        if (sibling->left->color == BLACK) { // Case 7 -> Case 8
+        if (sibling->left->c == BLACK) { // Case 7 -> Case 8
 
           sibling->right->c = BLACK;
           sibling->c = RED;
