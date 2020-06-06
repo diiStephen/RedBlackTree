@@ -241,7 +241,7 @@ that node.
 @return Pointer to data removed from the tree, or null if node with
 given key does not exist.
 **/
-void* delete(int key, struct RBTreeNode *root) {
+void* search_and_delete(int key, struct RBTreeNode *root) {
   struct RBTreeNode *result = search(key, root);
   if (result == NULL)
     return result;
@@ -308,7 +308,8 @@ void* delete_node(struct RBTreeNode **root, struct RBTreeNode *node) {
   deleted->left = NULL;
   response = deleted->data;
   deleted->data = 0; // Convention for deleted node.
-  dest_rbtree_node(deleted); // Delete the memory for the node.
+
+  //dest_rbtree_node(deleted); Let the user handle it, actually.
 
   //if (originalColor == BLACK)
     //RBT-Delete-Fixup(root, moved);

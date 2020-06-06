@@ -75,8 +75,8 @@ struct RBTreeNode* insert(int, void *, struct RBTreeNode **);
 /* Correct RBT properties after inserts. */
 void insert_fixup(struct RBTreeNode **, struct RBTreeNode *);
 
-/* Delete function - public. */
-void* delete(int, struct RBTreeNode *);
+/* Search and delete function - public. */
+void* search_and_delete(int, struct RBTreeNode *);
 
 /* Delete function - private. */
 void* delete_node(struct RBTreeNode **, struct RBTreeNode *);
