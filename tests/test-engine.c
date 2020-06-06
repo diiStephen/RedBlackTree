@@ -1,11 +1,3 @@
-#include "rbtree.h"
-#include<stdio.h>
-#include<stdlib.h>
-#include<string.h>
-
-#define CMD_L 4
-#define EXT_F 1
-
 /*
 
 Test engine for rbtree library. Commands accepted from stdin
@@ -31,6 +23,25 @@ Accepted commads and their formats:
 
 */
 
+#include "rbtree.h"
+#include<stdio.h>
+#include<stdlib.h>
+#include<string.h>
+
+#define CMD_L 4
+#define EXT_F 1
+
+#define gather(cmd, param)\
+  do{\
+    printf("[C]: ");\
+    scanf("%s", cmd);\
+    if (strcmp(cmd,"end") != 0) {\
+      scanf("%d", &param);\
+    }\
+  } while (0)
+
+
+
 int main(int argc, char** argv) {
 
   printf("Starting test engine!\n");
@@ -41,10 +52,11 @@ int main(int argc, char** argv) {
   }
   int param = 0;
 
-  printf("[C]: ");
-  scanf("%s %d", cmd, &param);
+  gather(cmd, param);
   while(strcmp(cmd, "end")) {
     printf("Commands: %s\n", cmd);
+    //execute
+    gather(cmd,param);
   }
 
   return 0;
