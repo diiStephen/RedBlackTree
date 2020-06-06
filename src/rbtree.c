@@ -239,12 +239,12 @@ associated to the removed node. Thus, this function is
 for cases where only the data associated to the given
 key is returned.
 
-@param key Key of node to be removed from the tree.
 @param root Pointer to the root pointer of the rbtree.
+@param key Key of node to be removed from the tree.
 @return Pointer to data removed from the tree, or null if node with
 given key does not exist.
 **/
-void* search_and_delete(int key, struct RBTreeNode *root) {
+void* search_and_delete(struct RBTreeNode *root, int key) {
 
   void *response = NULL;
   struct RBTreeNode *result = search(key, root);

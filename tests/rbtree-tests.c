@@ -78,10 +78,10 @@ void testOne() {
   printf("Testing delete functions!\n");
 
   printf("Deleting: 100\n");
-  search_and_delete(100, root);
+  search_and_delete(root, 100);
 
   printf("Deleting -4\n");
-  search_and_delete(-4, root);
+  search_and_delete(root, 100);
 
   printTree(root);
 
