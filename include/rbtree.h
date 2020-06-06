@@ -23,6 +23,9 @@ TODO:
 
 		6. Implementation should be modularized with the implementation hidden
 		   behind a public interface.
+
+		7. Implementation is not type safe. We use void * as satelite data field
+		in the rbtreeNode struct.
 */
 
 #define true 1
