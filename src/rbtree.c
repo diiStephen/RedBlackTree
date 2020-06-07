@@ -3,6 +3,10 @@
 #include<stdio.h>
 #include<stdlib.h>
 
+#define MAX(a, b)\
+  a < b ? b : a
+
+
 struct RBTreeNode* init_rbtree_node(struct RBTreeNode *p, struct RBTreeNode *l,
   struct RBTreeNode *r, int k, void *d, color_t c, bool s) {
 
@@ -565,6 +569,14 @@ struct RBTreeNode* successor(struct RBTreeNode *node) {
   return trace;
 
 }
+
+int height(struct RBTreeNode *walk) {
+  if (walk->isSen == true)
+    return 0;
+
+  return 1 + MAX(height(walk->left), height(walk->right));
+}
+
 
 /**
 Validate a the RBTreeNode pointed to by node.
