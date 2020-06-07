@@ -157,16 +157,19 @@ Using the included makefile, a test-engine program can be compiled and
 linked using the `engine` target of the makefile. I.e. `make engine` will
 build an executable called *test-engine* in a directory called `build/`.
 
-The *test-engine* program accepts commands from `stdin` as described below.
-The program continues to read input until the `end` commands is issued by
-the user.    
+Large test cases can be constructed to test the running times of the
+code.
 
-Commands accepted from stdin for building an RBT and performing queries.
-As commands are accepted from stdin, redirection can be used to
+The *test-engine* program accepts commands from `stdin` and writes
+its output to `stdout`. The program continues to read input until the
+`end` commands is issued by the user.    
+
+Commands accepted from `stdin` for building an RBT and performing queries.
+As commands are accepted from `stdin`, redirection can be used to
 create test files. The `test-cases/` subdirectory of the `tests/` includes
 some examples.
 
-As this is for test purposes, only ints are allowed as
+As this is for test purposes, only `int`s are allowed as
 parameters to commands.
 
 Accepted commands and their formats:
@@ -191,6 +194,13 @@ Accepted commands and their formats:
 
 
 # Future Work
+
+- [] Further modularization.
+
+- [] More user-friendly memory management.
+
+- [] Better runtime-error reporting system. These features are started by
+the errors.c file, but it is essentially a place-holder right now. 
 
 # Further Remarks
 
