@@ -17,6 +17,15 @@ Full details can be found in the docs directory (if they are available). These
 notes will cover the full details of the RBT as a data-structure.
 
 # Usage
+The files rbtree.c and rbtree.h can be included with any C project and compiled
+along with the rest of the source. The makefile included at the moment can be
+used to build the test-engine program.
+
+## Initialization
+A new RBT can be intialized with the `init_rbtree` function. For example,
+```C
+  struct RBTreeNode * root = init_rbtree(10, NULL);
+```
 
 # Testing
 
