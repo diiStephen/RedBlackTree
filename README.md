@@ -197,13 +197,15 @@ Accepted commands and their formats:
 
 - [ ] Further modularization. Thinking of packaging everything into a
 `struct` that manages the root pointer and maintains fields like the
-size of the tree. 
+size of the tree.
 
 - [ ] A more robust memory management. I want to allow users to have
 the option to substitute their own memory management.
 
 - [ ] Better runtime-error reporting system. These features are started by
 the errors.c file, but it is essentially a place-holder right now.
+
+- [ ] There are most likely opportunities for optimization. 
 
 - [ ] Replace the makefile with something better. I've never really enjoyed
 writing makefiles and it seems to be a little much for a project like this one.
