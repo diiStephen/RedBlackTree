@@ -2,3 +2,5 @@
 *.h~
 *.c~
 makefile~
+build/rbtree.so
+build/test-engine
