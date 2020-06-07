@@ -93,8 +93,38 @@ the tree.
 
 ## Query Functions
 
+```C
+/* Search the tree for a given key. */
+struct RBTreeNode* search(int, struct RBTreeNode *);
+```
+
+```C
+/* Search tree for node with minimum key. */
+struct RBTreeNode* minimum(struct RBTreeNode *);
+```
+
+```C
+/* Search tree for node with maximum key. */
+struct RBTreeNode* maximum(struct RBTreeNode *);
+```
+
+```C
+/* Find predecessor node. */
+struct RBTreeNode* predecessor(struct RBTreeNode *);
+```
+
+```C
+/* Find successor node. */
+struct RBTreeNode* successor(struct RBTreeNode *);
+```
+
+```C
+/* Compute the height of the RBT. */
+int height(struct RBTreeNode *);
+```
+
 # Testing
 
 # Future Work
 
-# References 
+# References
