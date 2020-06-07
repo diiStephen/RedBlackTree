@@ -109,6 +109,7 @@ int main(int argc, char** argv) {
 
   printf("Shutting down!\n");
   dest_rbtree(&root);
+  free(cmd);
   return 0;
 }
 

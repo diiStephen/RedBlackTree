@@ -103,6 +103,7 @@ void dest_rbtree(struct RBTreeNode **root) {
     dest_rbtree(&(*root)->right);
 
   (*root)->data = 0;
+  printf("[DELETE]: Freeing node with key: %d\n", (*root)->key); //Debug
   dest_rbtree_node(root);
 
 }
