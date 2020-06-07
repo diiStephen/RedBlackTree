@@ -24,8 +24,10 @@ used to build the test-engine program.
 ## Initialization
 A new RBT can be intialized with the `init_rbtree` function. For example,
 ```C
-  struct RBTreeNode * root = init_rbtree(10, NULL);
+  struct RBTreeNode *root = init_rbtree(10, NULL);
 ```
+will create a new RBT, rooted at the node pointed to by `root`, with key 10
+and `NULL` satellite data.
 
 # Testing
 
