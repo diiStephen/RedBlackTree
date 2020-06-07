@@ -22,6 +22,13 @@ The files rbtree.c and rbtree.h can be included with any C project and compiled
 along with the rest of the source. The makefile included at the moment can be
 used to build the test-engine program.
 
+**NOTE**: The functions described here are "public" in the sense
+that they are meant for external use. The library includes many "private"
+support functions that are not meant to be invoked by the user. They are
+mostly called during re-balancing procedures after insertions and deletions.
+Using them outside of their correct context will violate the integrity
+of the data structure. Consider yourself warned. 
+
 ## Initialization and Destruction
 
 A new RBT is intialized with the `init_rbtree` function. For example,

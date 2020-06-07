@@ -81,10 +81,10 @@ struct RBTreeNode* insert(struct RBTreeNode **, int, void *);
 /* Correct RBT properties after inserts. */
 void insert_fixup(struct RBTreeNode **, struct RBTreeNode *);
 
-/* Search and delete function - public. */
+/* Search and delete function . */
 void* search_and_delete(struct RBTreeNode **, int);
 
-/* Delete function - private. */
+/* Delete function. */
 void* delete_node(struct RBTreeNode **, struct RBTreeNode *);
 
 /* Correct RBT properties after deletion. */
@@ -110,7 +110,7 @@ struct RBTreeNode* predecessor(struct RBTreeNode *);
 /* Find successor node. */
 struct RBTreeNode* successor(struct RBTreeNode *);
 
-/* Compute the height of the RBT -- O(n) operation. */ 
+/* Compute the height of the RBT -- O(n) operation. */
 int height(struct RBTreeNode *);
 
 /****** UTILITY FUNCTIONS ******/
