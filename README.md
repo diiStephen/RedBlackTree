@@ -195,12 +195,12 @@ Accepted commands and their formats:
 
 # Future Work
 
-- [] Further modularization.
+- [ ] Further modularization.
 
-- [] More user-friendly memory management.
+- [ ] More user-friendly memory management.
 
-- [] Better runtime-error reporting system. These features are started by
-the errors.c file, but it is essentially a place-holder right now. 
+- [ ] Better runtime-error reporting system. These features are started by
+the errors.c file, but it is essentially a place-holder right now.
 
 # Further Remarks
 
