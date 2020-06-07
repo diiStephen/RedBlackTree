@@ -8,11 +8,16 @@ more complicated data.
 
 #  Background
 
-Let T be a *red-black tree* (RBT). Then T is a *binary search tree* (BST) with
+Let T be a **red-black tree** (RBT). Then T is a **binary search tree** (BST) with
 guaranteed height O(lg n) where n = size(T), i.e. the number of nodes in T.
 Thus, an RBT is balanced. Thus, operations like search, insert, delete, minimum,
-maximum, etc... run in O(lg n) worst-case time. 
+maximum, etc... run in O(lg n) worst-case time.
+
+Full details can be found in the docs directory (if they are available). These
+notes will cover the full details of the RBT as a data-structure.
 
 # Usage
+
+# Testing
 
 # Future Work
