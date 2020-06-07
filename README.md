@@ -1,10 +1,10 @@
 # RedBlackTree
 
 An implementation of the Red-Black Tree data structure in C. The interface
-is designed to be simple to use and generic with the use of a void * field
+is designed to be simple to use and generic with the use of a `void *` field
 for satellite data. Keys, at the moment, are assumed to be integers. Thus,
 the data structure can be used to store a collection of `int`s or as a map for
-more complicated data.
+more complicated data index by integers. 
 
 #  Background
 
@@ -205,7 +205,7 @@ the option to substitute their own memory management.
 - [ ] Better runtime-error reporting system. These features are started by
 the errors.c file, but it is essentially a place-holder right now.
 
-- [ ] There are most likely opportunities for optimization. 
+- [ ] There are most likely opportunities for optimization.
 
 - [ ] Replace the makefile with something better. I've never really enjoyed
 writing makefiles and it seems to be a little much for a project like this one.
