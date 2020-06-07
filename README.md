@@ -202,6 +202,18 @@ Accepted commands and their formats:
 - [ ] Better runtime-error reporting system. These features are started by
 the errors.c file, but it is essentially a place-holder right now.
 
+- [ ] Replace the makefile with something better. I've never really enjoyed
+writing makefiles and it seems to be a little much for a project like this one.
+
 # Further Remarks
 
+1. Comments and suggestions are always welcomed!
+
+2. There may be as-of-yet undiscovered bugs. Let me know if you happen
+to catch anything.
+
 # References
+
+Cormen, Thomas H., et al. *Introduction to algorithms.* MIT press, 2009.
+
+Goodrich, Michael T., Roberto Tamassia, and Michael H. Goldwasser. *Data structures and algorithms in Java.* John Wiley & Sons, 2014.
