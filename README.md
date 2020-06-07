@@ -22,19 +22,31 @@ The files rbtree.c and rbtree.h can be included with any C project and compiled
 along with the rest of the source. The makefile included at the moment can be
 used to build the test-engine program.
 
-## Initialization
+## Initialization and Destruction
 
-A new RBT can be intialized with the `init_rbtree` function. For example,
+A new RBT is intialized with the `init_rbtree` function. For example,
 ```C
   struct RBTreeNode *root = init_rbtree(10, NULL);
 ```
 will create a new RBT, rooted at the node pointed to by `root`, with key 10
 and `NULL` satellite data. Of course, `typedef` can be used to simplify the
-code, but the choice is up to the user.
+code, but the choice is up to the user. All updates and queries for the tree
+will be done through use of the `root` pointer.
+
+An RBT with root pointer `root` can be destroyed using the `dest_rbtree`
+function with takes a double pointer to the root. E.g.
+```C
+  dest_rbtree(&root);
+```
+
+**NOTE**: `dest_rbtree` assumes that any satellite data contained in the nodes
+have been handled. Otherwise, this may lead to memory leaks. It is the user's
+responsibility to deallocate memory created for satelite data. 
+
 
 ## Update Functions
 
-## Query Functions 
+## Query Functions
 
 # Testing
 
