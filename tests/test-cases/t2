@@ -1,0 +1,20 @@
+ins 20
+ins -1
+ins -80
+ins 100
+ins 101
+ins 605
+ins 103
+del 100
+del 605
+del 12
+ins 132
+ins 10923
+del 132
+ins 5
+del 5
+ins 6
+ins 7
+ins 12
+prt
+end
