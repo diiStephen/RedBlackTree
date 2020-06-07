@@ -16,11 +16,23 @@ maximum, etc... run in O(lg n) worst-case time.
 Full details can be found in the docs directory (if they are available). These
 notes will cover the full details of the RBT as a data-structure.
 
+# Compilation
+The included makefile includes two build targets: default and engine.
+
+The *default* target will build a shared object library, `rbtree.so` in the `build/`
+directory. This can then be used just like any other shared object library.
+
+The *engine* target builds the test-engine program, also in the `build/`
+directory. This program can be used to write tests for the RBT. Further
+details regarding `test-engine` are available below in the "Testing" section.
+
+Additionally, the files rbtree.c, rbtree.h, errors.c, and errors.h can be
+included with any C project and compiled along with the rest of the source. Thus,
+you don't have to use the makefile if it's not necessary. 
+
 # Usage
 
-The files rbtree.c and rbtree.h can be included with any C project and compiled
-along with the rest of the source. The makefile included at the moment can be
-used to build the test-engine program.
+
 
 **NOTE**: The functions described here are "public" in the sense
 that they are meant for external use. The library includes many "private"
@@ -144,6 +156,6 @@ used for testing purposes.
 
 # Future Work
 
-# Further Remarks 
+# Further Remarks
 
 # References
