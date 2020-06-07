@@ -27,7 +27,7 @@ that they are meant for external use. The library includes many "private"
 support functions that are not meant to be invoked by the user. They are
 mostly called during re-balancing procedures after insertions and deletions.
 Using them outside of their correct context will violate the integrity
-of the data structure. Consider yourself warned. 
+of the data structure. Consider yourself warned.
 
 ## Initialization and Destruction
 
@@ -59,14 +59,30 @@ modify the tree.
 /* Insertion function. */
 struct RBTreeNode* insert(struct RBTreeNode **, int, void *);
 ```
+The `insert` function will insert a new node into the tree with
+given `int` key and `void *` satellite data. This operation takes O(lg n) time
+even when re-balancing occurs.
+
+There are two delete functions that remove nodes from the tree.
+```C
+/* Search and delete function . */
+void* search_and_delete(struct RBTreeNode **, int);
+```
+`search_and_delete` searches the tree given by the first parameter for a node
+with key given by the second parameter. If a node with the given key exists,
+then it will be removed and the memory for that node will be destroyed. A pointer
+to the satellite data of the node will be returned, or `NULL` if a node with
+the given key is not found in the tree.
 
 ```C
-/* Search and delete function - public. */
-void* search_and_delete(struct RBTreeNode **, int);
-
-/* Delete function - private. */
+/* Delete function. */
 void* delete_node(struct RBTreeNode **, struct RBTreeNode *);
 ```
+`delete_node` accepts a tree and a node. The function will remove the given
+node from the tree and return a pointer to the satellite data. No memory
+is freed for this function. It is assumed that the node is a valid node of
+the tree. 
+
 
 ## Query Functions
 
