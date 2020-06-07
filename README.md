@@ -41,10 +41,25 @@ function with takes a double pointer to the root. E.g.
 
 **NOTE**: `dest_rbtree` assumes that any satellite data contained in the nodes
 have been handled. Otherwise, this may lead to memory leaks. It is the user's
-responsibility to deallocate memory created for satelite data. 
+responsibility to deallocate memory created for satellite data.
 
 
 ## Update Functions
+The RBT supports the following *update* functions, i.e. these functions
+modify the tree.
+
+```C
+/* Insertion function. */
+struct RBTreeNode* insert(struct RBTreeNode **, int, void *);
+```
+
+```C
+/* Search and delete function - public. */
+void* search_and_delete(struct RBTreeNode **, int);
+
+/* Delete function - private. */
+void* delete_node(struct RBTreeNode **, struct RBTreeNode *);
+```
 
 ## Query Functions
 
