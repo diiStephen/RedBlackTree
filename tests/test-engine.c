@@ -107,12 +107,9 @@ int main(int argc, char** argv) {
     gather(cmd,param);
   }
 
-  // Testing different memory free techniques. 
+  // Testing different memory free techniques.
   printf("Shutting down!\n");
-  if(root->left->isSen == false) dest_rbtree(&(root->left));
-  if(root->right->isSen == false) dest_rbtree(&(root->right));
-  free(root->parent);
-  free(root);
+  dest_rbtree(&root);
   free(cmd);
   return 0;
 }

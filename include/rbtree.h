@@ -67,8 +67,11 @@ void free_rbtree_node(struct RBTreeNode **);
 /* Constructor for Red-Black tree itself. */
 struct RBTreeNode* init_rbtree(int, void *);
 
-/* Destructor for for RB-Tree. */
+/* Public destructor wrapper for for RB-Tree. */
 void dest_rbtree(struct RBTreeNode **);
+
+/* Private destructor for RBT. */
+void dest_rbtree_(struct RBTreeNode **);
 
 /****** UPDATE FUNCTIONS ******/
 

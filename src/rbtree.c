@@ -96,16 +96,23 @@ each node has already been destroyed.
 @param root Root of RBT to be de-allocated.
 **/
 void dest_rbtree(struct RBTreeNode **root) {
+  if((*root)->left->isSen == false) dest_rbtree_(&((*root)->left));
+  if((*root)->right->isSen == false) dest_rbtree_(&((*root)->right));
+  (*root)->data = 0;
+  (*root)->parent->data = 0;
+  dest_rbtree_node(&((*root)->parent));
+  dest_rbtree_node(root);
+}
 
+void dest_rbtree_(struct RBTreeNode **root) {
   if ((*root)->left->isSen != true)
-    dest_rbtree(&(*root)->left);
+    dest_rbtree_(&(*root)->left);
   if ((*root)->right->isSen != true)
-    dest_rbtree(&(*root)->right);
+    dest_rbtree_(&(*root)->right);
 
   (*root)->data = 0;
-  printf("[DELETE]: Freeing node with key: %d\n", (*root)->key); //Debug
+  //printf("[DELETE]: Freeing node with key: %d\n", (*root)->key);
   dest_rbtree_node(root);
-
 }
 
 /**
