@@ -23,7 +23,9 @@ Accepted commads and their formats:
 
 7. rot -- print details of root node.
 
-7. end -- shutdown the test program.
+8. hit -- print height of the tree.
+
+9. end -- shutdown the test program.
 
 */
 
@@ -41,7 +43,7 @@ Accepted commads and their formats:
   do{\
     printf("[C]: ");\
     scanf("%s", cmd);\
-    if (strcmp(cmd,"end") != 0 && strcmp(cmd,"prt") != 0 && strcmp(cmd,"rot") != 0) {\
+    if (strcmp(cmd,"end") != 0 && strcmp(cmd,"prt") != 0 && strcmp(cmd,"rot") != 0 && strcmp(cmd,"hit") != 0) {\
       scanf("%d", &param);\
     }\
   } while (0)
@@ -72,6 +74,7 @@ void exec_srh(struct RBTreeNode *, int);
 void exec_prt(struct RBTreeNode *);
 void inorder(struct RBTreeNode *);
 void exec_rot(struct RBTreeNode *);
+void exec_hit(struct RBTreeNode *);
 
 int main(int argc, char** argv) {
 
@@ -100,6 +103,8 @@ int main(int argc, char** argv) {
       exec_prt(root);
     } else if (strcmp(cmd,"rot") == 0) {
       exec_rot(root);
+    } else if (strcmp(cmd,"hit") == 0) {
+      exec_hit(root);
     } else {
       printf("Unreconized.\n");
     }
@@ -155,4 +160,10 @@ void exec_rot(struct RBTreeNode *root) {
     printf("Empty tree!\n");
   else
     print_node(root);
+}
+
+void exec_hit(struct RBTreeNode *root) {
+  int h = 0;
+  h = height(root);
+  printf("height(T) = %d\n", h);
 }

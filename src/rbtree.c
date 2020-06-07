@@ -4,7 +4,7 @@
 #include<stdlib.h>
 
 #define MAX(a, b)\
-  a < b ? b : a
+  (a < b ? b : a)
 
 
 struct RBTreeNode* init_rbtree_node(struct RBTreeNode *p, struct RBTreeNode *l,
