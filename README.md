@@ -92,36 +92,53 @@ the tree.
 
 
 ## Query Functions
+Many of the query functions are self-explanatory. Their name
+implies their use. All of them, besides the `height` function,
+run in O(lg n) time. The `height` function runs in O(n) time.
 
 ```C
 /* Search the tree for a given key. */
 struct RBTreeNode* search(int, struct RBTreeNode *);
 ```
+Search for a node with the key given as the first parameter. The second
+parameter is a pointer to the root of the (sub)tree to be searched. If a node
+with the key is found, then a pointer to the node is returned, otherwise a null
+pointer is returned.
 
 ```C
 /* Search tree for node with minimum key. */
 struct RBTreeNode* minimum(struct RBTreeNode *);
 ```
+Search for and return a pointer to a node with minimum key in the tree
+rooted at the given pointer.  
 
 ```C
 /* Search tree for node with maximum key. */
 struct RBTreeNode* maximum(struct RBTreeNode *);
 ```
+Search for and return a pointer to a node with maximum key in the tree
+rooted at the given pointer.   
 
 ```C
 /* Find predecessor node. */
 struct RBTreeNode* predecessor(struct RBTreeNode *);
 ```
+Search for an return a pointer to the node that is the predecessor
+of the given node in the tree.
 
 ```C
 /* Find successor node. */
 struct RBTreeNode* successor(struct RBTreeNode *);
 ```
+Search for an return a pointer to the node that is the successor
+of the given node in the tree.
 
 ```C
 /* Compute the height of the RBT. */
 int height(struct RBTreeNode *);
 ```
+Compute the height of the tree given by the parameter. This function is mostly
+used for testing purposes. 
 
 # Testing
 
