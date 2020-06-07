@@ -32,9 +32,11 @@ of the data structure. Consider yourself warned.
 ## Initialization and Destruction
 
 A new RBT is intialized with the `init_rbtree` function. For example,
+
 ```C
-  struct RBTreeNode *root = init_rbtree(10, NULL);
+struct RBTreeNode *root = init_rbtree(10, NULL);
 ```
+
 will create a new RBT, rooted at the node pointed to by `root`, with key 10
 and `NULL` satellite data. Of course, `typedef` can be used to simplify the
 code, but the choice is up to the user. All updates and queries for the tree
@@ -42,8 +44,9 @@ will be done through use of the `root` pointer.
 
 An RBT with root pointer `root` can be destroyed using the `dest_rbtree`
 function with takes a double pointer to the root. E.g.
+
 ```C
-  dest_rbtree(&root);
+dest_rbtree(&root);
 ```
 
 **NOTE**: `dest_rbtree` assumes that any satellite data contained in the nodes
@@ -81,7 +84,7 @@ void* delete_node(struct RBTreeNode **, struct RBTreeNode *);
 `delete_node` accepts a tree and a node. The function will remove the given
 node from the tree and return a pointer to the satellite data. No memory
 is freed for this function. It is assumed that the node is a valid node of
-the tree. 
+the tree.
 
 
 ## Query Functions
