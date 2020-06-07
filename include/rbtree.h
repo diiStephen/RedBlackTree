@@ -110,6 +110,9 @@ struct RBTreeNode* predecessor(struct RBTreeNode *);
 /* Find successor node. */
 struct RBTreeNode* successor(struct RBTreeNode *);
 
+/* Compute the height of the RBT -- O(n) operation. */ 
+int height(struct RBTreeNode *);
+
 /****** UTILITY FUNCTIONS ******/
 
 /* Validate nodes accepted as parameters. */
