@@ -8,4 +8,6 @@ ins 11
 ins 12
 prt
 rot
+del 1
+prt
 end
