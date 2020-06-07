@@ -138,10 +138,12 @@ of the given node in the tree.
 int height(struct RBTreeNode *);
 ```
 Compute the height of the tree given by the parameter. This function is mostly
-used for testing purposes. 
+used for testing purposes.
 
 # Testing
 
 # Future Work
+
+# Further Remarks 
 
 # References

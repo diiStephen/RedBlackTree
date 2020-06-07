@@ -24,11 +24,6 @@ all: rbtree.o
 	$(CC) rbtree.o -o $(BUILD)/$(NAME)
 	@echo '...done!'
 
-test: rbtree-tests.o rbtree.o errors.o
-	@echo 'Starting linking process for test files...'
-	$(CC) rbtree-tests.o rbtree.o errors.o -o $(BUILD)/$(TNAME)
-	@echo '...done!'
-
 engine: test-engine.o rbtree.o errors.o
 	@echo 'Linking test engine program...'
 	$(CC) test-engine.o rbtree.o errors.o -o $(BUILD)/$(ENAME)
@@ -38,11 +33,6 @@ test-engine.o: test-engine.c rbtree.h
 	@echo 'Building test-engine module...'
 	$(CC) $(CFLAGS) $(INCLUDE) $<
 	@echo '...done!'
-
-rbtree-tests.o: rbtree-tests.c rbtree.h
-	@echo 'Building Red-Black Tree tests!'
-	$(CC) $(CFLAGS) $(INCLUDE) $<
-	@echo 'done!'
 
 rbtree.o: rbtree.c rbtree.h errors.h
 	@echo 'Building rbtree.'
