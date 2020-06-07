@@ -28,7 +28,7 @@ details regarding `test-engine` are available below in the "Testing" section.
 
 Additionally, the files rbtree.c, rbtree.h, errors.c, and errors.h can be
 included with any C project and compiled along with the rest of the source. Thus,
-you don't have to use the makefile if it's not necessary. 
+you don't have to use the makefile if it's not necessary.
 
 # Usage
 
@@ -135,14 +135,14 @@ rooted at the given pointer.
 /* Find predecessor node. */
 struct RBTreeNode* predecessor(struct RBTreeNode *);
 ```
-Search for an return a pointer to the node that is the predecessor
+Search for and return a pointer to the node that is the predecessor
 of the given node in the tree.
 
 ```C
 /* Find successor node. */
 struct RBTreeNode* successor(struct RBTreeNode *);
 ```
-Search for an return a pointer to the node that is the successor
+Search for and return a pointer to the node that is the successor
 of the given node in the tree.
 
 ```C
