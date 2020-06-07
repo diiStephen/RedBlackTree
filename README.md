@@ -66,7 +66,11 @@ The `insert` function will insert a new node into the tree with
 given `int` key and `void *` satellite data. This operation takes O(lg n) time
 even when re-balancing occurs.
 
-There are two delete functions that remove nodes from the tree.
+There are two delete functions that remove nodes from the tree. Both functions
+perform the same operation fundamentally. The RBT may be re-balanced and
+re-colored based on the update. Regardless, the time is always O(lg n) for
+deletions.
+
 ```C
 /* Search and delete function . */
 void* search_and_delete(struct RBTreeNode **, int);
