@@ -35,9 +35,9 @@ NOTE: There may be memory leaks if the satelite data is not handled properly.
 
 @param node Pointer to node to be destroyed.
 **/
-void dest_rbtree_node(struct RBTreeNode *node) {
-  if (node->data == 0) {
-    free_rbtree_node(&node);
+void dest_rbtree_node(struct RBTreeNode **node) {
+  if ((*node)->data == 0) {
+    free_rbtree_node(node);
   } else {
     display_error(INV_DELOC);
   }
@@ -97,12 +97,12 @@ each node has already been destroyed.
 **/
 void dest_rbtree(struct RBTreeNode **root) {
 
-  if (root->left != NULL)
-    dest_rbtree(root->left);
-  if (root->right != NULL)
-    dest_rbtree(root->right);
+  if ((*root)->left->isSen != true)
+    dest_rbtree(&(*root)->left);
+  if ((*root)->right->isSen != true)
+    dest_rbtree(&(*root)->right);
 
-  root->data = 0;
+  (*root)->data = 0;
   dest_rbtree_node(root);
 
 }
@@ -253,7 +253,7 @@ void* search_and_delete(struct RBTreeNode **root, int key) {
     return result;
   } else {
     response = delete_node(root, result);
-    dest_rbtree_node(result); // Handle the memory in this case.
+    dest_rbtree_node(&result); // Handle the memory in this case.
     return response;
   }
 }

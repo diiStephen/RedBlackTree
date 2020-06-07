@@ -59,7 +59,7 @@ struct RBTreeNode* init_rbtree_node(struct RBTreeNode *, struct RBTreeNode *,
 	struct RBTreeNode *, int, void *, color_t, bool);
 
 /* Destructor for Red-Black tree node. */
-void dest_rbtree_node(struct RBTreeNode *);
+void dest_rbtree_node(struct RBTreeNode **);
 
 /* Specialized free function to avoid dangling pointers. */
 void free_rbtree_node(struct RBTreeNode **);

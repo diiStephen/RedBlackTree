@@ -107,6 +107,8 @@ int main(int argc, char** argv) {
     gather(cmd,param);
   }
 
+  printf("Shutting down!\n");
+  dest_rbtree(&root);
   return 0;
 }
 
