@@ -68,7 +68,7 @@ void free_rbtree_node(struct RBTreeNode **);
 struct RBTreeNode* init_rbtree(int, void *);
 
 /* Destructor for for RB-Tree. */
-void dest_rbtree(struct RBTreeNode *);
+void dest_rbtree(struct RBTreeNode **);
 
 /****** UPDATE FUNCTIONS ******/
 

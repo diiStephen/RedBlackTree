@@ -95,7 +95,7 @@ each node has already been destroyed.
 
 @param root Root of RBT to be de-allocated.
 **/
-void dest_rbtree(struct RBTreeNode *root) {
+void dest_rbtree(struct RBTreeNode **root) {
 
   if (root->left != NULL)
     dest_rbtree(root->left);
