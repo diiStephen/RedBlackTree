@@ -210,10 +210,14 @@ writing makefiles and it seems to be a little much for a project like this one.
 1. Comments and suggestions are always welcomed!
 
 2. There may be as-of-yet undiscovered bugs. Let me know if you happen
-to catch anything.
+to catch anything!
+
+3. Detailed documentation regarding the functions are included in the source
+itself. These are written in "javadoc" style. One day this will be turned into
+reference documents using doxygen or something similar. 
 
 # References
 
-Cormen, Thomas H., et al. *Introduction to algorithms.* MIT press, 2009.
+1. Cormen, Thomas H., et al. *Introduction to algorithms.* MIT press, 2009.
 
-Goodrich, Michael T., Roberto Tamassia, and Michael H. Goldwasser. *Data structures and algorithms in Java.* John Wiley & Sons, 2014.
+2. Goodrich, Michael T., Roberto Tamassia, and Michael H. Goldwasser. *Data structures and algorithms in Java.* John Wiley & Sons, 2014.
