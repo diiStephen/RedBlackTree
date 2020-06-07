@@ -195,9 +195,12 @@ Accepted commands and their formats:
 
 # Future Work
 
-- [ ] Further modularization.
+- [ ] Further modularization. Thinking of packaging everything into a
+`struct` that manages the root pointer and maintains fields like the
+size of the tree. 
 
-- [ ] More user-friendly memory management.
+- [ ] A more robust memory management. I want to allow users to have
+the option to substitute their own memory management.
 
 - [ ] Better runtime-error reporting system. These features are started by
 the errors.c file, but it is essentially a place-holder right now.
@@ -214,7 +217,7 @@ to catch anything!
 
 3. Detailed documentation regarding the functions are included in the source
 itself. These are written in "javadoc" style. One day this will be turned into
-reference documents using doxygen or something similar. 
+reference documents using doxygen or something similar.
 
 # References
 
