@@ -153,6 +153,42 @@ Compute the height of the tree given by the parameter. This function is mostly
 used for testing purposes.
 
 # Testing
+Using the included makefile, a test-engine program can be compiled and
+linked using the `engine` target of the makefile. I.e. `make engine` will
+build an executable called *test-engine* in a directory called `build/`.
+
+The *test-engine* program accepts commands from `stdin` as described below.
+The program continues to read input until the `end` commands is issued by
+the user.    
+
+Commands accepted from stdin for building an RBT and performing queries.
+As commands are accepted from stdin, redirection can be used to
+create test files. The `test-cases/` subdirectory of the `tests/` includes
+some examples.
+
+As this is for test purposes, only ints are allowed as
+parameters to commands.
+
+Accepted commands and their formats:
+
+1. ins x -- insert x into the tree.
+
+2. del x -- remove x from the tree.
+
+3. srh x -- search for x in tree.
+
+4. max -- display max key in the tree.
+
+5. min -- display min key in the tree.
+
+6. prt -- print tree in-order.
+
+7. rot -- print details of root node.
+
+8. hit -- print height of the tree.
+
+9. end -- shutdown the test program.
+
 
 # Future Work
 
