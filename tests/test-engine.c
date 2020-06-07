@@ -67,7 +67,7 @@ Accepted commads and their formats:
 
 // Prototypes.
 void exec_ins(struct RBTreeNode **, int);
-void exec_del(struct RBTreeNode *, int);
+void exec_del(struct RBTreeNode **, int);
 void exec_srh(struct RBTreeNode *, int);
 void exec_prt(struct RBTreeNode *);
 void inorder(struct RBTreeNode *);
@@ -93,7 +93,7 @@ int main(int argc, char** argv) {
     if (strcmp(cmd,"ins") == 0) {
       exec_ins(&root, param);
     } else if (strcmp(cmd,"del") == 0){
-      exec_del(root, param);
+      exec_del(&root, param);
     } else if (strcmp(cmd,"srh") == 0) {
       exec_srh(root, param);
     } else if (strcmp(cmd,"prt") == 0) {
@@ -117,7 +117,7 @@ void exec_ins(struct RBTreeNode **root, int p) {
     insert(root, p, NULL);
 }
 
-void exec_del(struct RBTreeNode *root, int p) {
+void exec_del(struct RBTreeNode **root, int p) {
   search_and_delete(root, p);
 }
 

@@ -244,15 +244,15 @@ key is returned.
 @return Pointer to data removed from the tree, or null if node with
 given key does not exist.
 **/
-void* search_and_delete(struct RBTreeNode *root, int key) {
+void* search_and_delete(struct RBTreeNode **root, int key) {
 
   void *response = NULL;
-  struct RBTreeNode *result = search(key, root);
+  struct RBTreeNode *result = search(key, *root);
 
   if (result == NULL) {
     return result;
   } else {
-    response = delete_node(&root, result);
+    response = delete_node(root, result);
     dest_rbtree_node(result); // Handle the memory in this case.
     return response;
   }

@@ -79,7 +79,7 @@ struct RBTreeNode* insert(struct RBTreeNode **, int, void *);
 void insert_fixup(struct RBTreeNode **, struct RBTreeNode *);
 
 /* Search and delete function - public. */
-void* search_and_delete(struct RBTreeNode *, int);
+void* search_and_delete(struct RBTreeNode **, int);
 
 /* Delete function - private. */
 void* delete_node(struct RBTreeNode **, struct RBTreeNode *);
