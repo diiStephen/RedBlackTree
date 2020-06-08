@@ -54,3 +54,11 @@ clean:
 	rm -f ${SRC}/*.c~
 	rm -f makefile~
 	@echo '...done!'
+
+cleanTEX:
+	@echo 'Removing latex temp. files...'
+	rm -f *.aux
+	rm -f *.log
+	rm -f *.out
+	rm -f *.pdf
+	@echo '...done!'
