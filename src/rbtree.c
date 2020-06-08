@@ -30,7 +30,7 @@ struct RBTreeNode* init_rbtree_node(struct RBTreeNode *p, struct RBTreeNode *l,
 
 /**
 Function for destroying RBTreeNodes. Accepts a pointer
-to a node to be destroyed. The node's satelite data pointer
+to a node to be destroyed. The node's satellite data pointer
 must be handled by the caller. The convention here is that the
 data field of the node struct must be assigned to 0 to indicate
 that the data has been handled.
@@ -67,7 +67,7 @@ void free_rbtree_node(struct RBTreeNode **node) {
 }
 
 /**
-Function to construct a new RBT with intial key k and initial satelite
+Function to construct a new RBT with intial key k and initial satellite
 data pointer d. Function creates a root node and the sentinel node. The
 sentinel node can always be accessed by using root->parent. This sentinel
 will be useful in simplifying the implementation of the RBT operations.
@@ -97,7 +97,12 @@ post-order walks the tree, freeing each node.
 CAUTION: This function assumes that all data associated to
 each node has already been destroyed.
 
-@param root Root of RBT to be de-allocated.
+This function calls the dest_rbtree_ helper function to
+handle the left and right subtrees of the root. Finally,
+it destroys the sentinel (which, at this point, is no longer
+the child of any node), and then destroys the root node itself.
+
+@param root Root of RBT to be deallocated.
 **/
 void dest_rbtree(struct RBTreeNode **root) {
   if((*root)->left->isSen == false) dest_rbtree_(&((*root)->left));
@@ -108,6 +113,13 @@ void dest_rbtree(struct RBTreeNode **root) {
   dest_rbtree_node(root);
 }
 
+/**
+Helper function for dest_rbtree function. This
+function performs the post-order walk to
+free the left and right subtrees of the root node.
+
+@param root Double pointer to root of tree for freeing.
+**/
 void dest_rbtree_(struct RBTreeNode **root) {
   if ((*root)->left->isSen != true)
     dest_rbtree_(&(*root)->left);
@@ -115,7 +127,6 @@ void dest_rbtree_(struct RBTreeNode **root) {
     dest_rbtree_(&(*root)->right);
 
   (*root)->data = 0;
-  //printf("[DELETE]: Freeing node with key: %d\n", (*root)->key);
   dest_rbtree_node(root);
 }
 
@@ -164,7 +175,7 @@ struct RBTreeNode* insert(struct RBTreeNode **root, int k, void *data) {
     parent->right = newest;
   }
 
-  insert_fixup(root, newest); //Fix any voilations.
+  insert_fixup(root, newest); //Fix any violations.
 
   return newest;
 }
@@ -243,17 +254,17 @@ void insert_fixup(struct RBTreeNode **root, struct RBTreeNode *newest) {
 }
 
 /**
-Public delete function. Removes a node with the given key
-in RB-tree rooted at *root. First the function finds a node
+Search and delete function. Removes a node with the given key
+in RBT rooted at *root. First the function finds a node
 with the given key, then calls the delete_node function on
-that node. This function will handle free'ing the memory
+that node. This function will handle freeing the memory
 associated to the removed node. Thus, this function is
 for cases where only the data associated to the given
 key is returned.
 
 @param root Pointer to the root pointer of the rbtree.
 @param key Key of node to be removed from the tree.
-@return Pointer to data removed from the tree, or null if node with
+@return Pointer to data removed from the tree, or NULL if node with
 given key does not exist.
 **/
 void* search_and_delete(struct RBTreeNode **root, int key) {
@@ -271,7 +282,7 @@ void* search_and_delete(struct RBTreeNode **root, int key) {
 }
 
 /**
-Private utility function for deleting nodes. Removes the node
+Function for deleting nodes. Removes the node
 pointed to by node from the rbtree.
 
 @param root Pointer to the root pointer of the RBT where the deletion
@@ -324,7 +335,7 @@ void* delete_node(struct RBTreeNode **root, struct RBTreeNode *node) {
 
   }
 
-  deleted->parent = deleted; //Convention for deleted node.
+  deleted->parent = deleted; //Start conventions for deleted node.
   deleted->right = NULL;
   deleted->left = NULL;
   response = deleted->data;
@@ -341,8 +352,7 @@ void* delete_node(struct RBTreeNode **root, struct RBTreeNode *node) {
 /**
 Function for correcting RBT-property violations after performing
 a deletion. Cases 1 - 8 depend on the color of the sibling of dblack
-and the color of its children. See included notes for full description
-of the cases handled by this algorithm.
+and the color of its children.
 
 @param root Root of the RBT.
 @param dblack Node with violation. In the while loop, dblack always indicates
@@ -443,8 +453,6 @@ void delete_fixup(struct RBTreeNode **root, struct RBTreeNode *dblack) {
 Private utility function used in the delete procedure. Reaplaces
 the subtree rooted at node dest with subtree rooted at node src.
 
-NOTE: I suspect there is a memory leak here, i.e. dest.
-
 @param root Root of RB-tree where transplant is taking place.
 @param dest Destination of replacement.
 @param src Source of replacement.
@@ -470,7 +478,8 @@ void transplant(struct RBTreeNode **root, struct RBTreeNode *dest,
 /**
 Perform a recursive search of the RB-tree rooted at root.
 Uses the BST property for fast searches. Let h = height(T),
-then the running time of search is O(h).
+then the running time of search is O(h). Since h = O(lg n)
+for RBTs, this function is efficient even for large n.
 
 @param key Key associated to the node being searched.
 @param root Root of the RB-tree being searched.
@@ -544,7 +553,6 @@ struct RBTreeNode* predecessor(struct RBTreeNode *node) {
     trace = trace->parent;
   }
   return trace;
-
 }
 
 /**
@@ -570,6 +578,15 @@ struct RBTreeNode* successor(struct RBTreeNode *node) {
 
 }
 
+/**
+Function for computing the height of the (sub)tree
+of the RBT rooted at walk. This function is recursive,
+and is mostly used for testing purposes, i.e. to
+check the h <= 2lg(n + 1) bound.
+
+@param walk Pointer to subtree targeted for height calculation.
+@return height of the tree.
+**/
 int height(struct RBTreeNode *walk) {
   if (walk->isSen == true)
     return 0;
@@ -587,6 +604,9 @@ assigned to itself. This is used to indicate a defunct node of the tree.
 Some functions allow a null pointer as node, others do not, so
 the chkNull parameter here specifies if a null node is considered
 invalid.
+
+Note: This function is mostly a relic from before the time
+of the sentinel node.
 
 @param node Pointer to RBTreeNode to be validated
 @param chkNull Consider null pointers invalid?
@@ -649,9 +669,6 @@ by re-arranging pointers. The running time is O(1). Furthermore, a right-rotate
 preserves the BST properties.
 
 right_rotate assumes that node->left != s, the senitnel.
-
-Question: Do I need double pointers here to perform these updates? Pass
-by value vs. pass by reference w.r.t the root pointer, I believe.
 
 @param root Root of the RBT containing node.
 @node Node of the tree to Right-Rotate.
