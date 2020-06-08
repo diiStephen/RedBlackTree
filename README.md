@@ -199,7 +199,7 @@ Accepted commands and their formats:
 `struct` that manages the root pointer and maintains fields like the
 size of the tree.
 
-- [ ] Support for some type of iterator. 
+- [ ] Support for some type of iterator.
 
 - [ ] A more robust memory management. I want to allow users to have
 the option to substitute their own memory management.
