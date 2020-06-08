@@ -3,35 +3,14 @@
 
 /* Simple Red-Black tree implementation. */
 
-/*
-TODO:
-		1. Need to add support for sentinel node. The RBTree design
-			 only stores data at internal nodes. All previously NULL pointers will
-			 have to be replaced to a reference to a special sentinel node. How is
-			 the sentinel node marked? Informating in the node struct?
 
+/****** CONSTANTS AND TYPE DEFINITIONS ******/
 
-		2. Add functionality for iterator design pattern. This will make the
-			 traversal algorithms easier. Return an iterator rather than take
-			 function pointers.
-
-		3. Make sure the data structure is multi-thread safe.
-
-		4. Add doxygen documention.
-
-		5. Compile and link as a shared object library, besides the test programs.
-
-		6. Implementation should be modularized with the implementation hidden
-		   behind a public interface.
-
-		7. Implementation is not type safe. We use void * as satelite data field
-		in the rbtreeNode struct.
-*/
-
-#define true 1
+#define true  1
 #define false 0
 typedef int bool;
 
+// Colorings for nodes.
 enum color {
 	    RED,
 	    BLACK
@@ -61,7 +40,7 @@ struct RBTreeNode* init_rbtree_node(struct RBTreeNode *, struct RBTreeNode *,
 /* Destructor for Red-Black tree node. */
 void dest_rbtree_node(struct RBTreeNode **);
 
-/* Specialized free function to avoid dangling pointers. */
+/* Specialized free function to help avoid dangling pointers. */
 void free_rbtree_node(struct RBTreeNode **);
 
 /* Constructor for Red-Black tree itself. */
@@ -90,7 +69,7 @@ void* delete_node(struct RBTreeNode **, struct RBTreeNode *);
 /* Correct RBT properties after deletion. */
 void delete_fixup(struct RBTreeNode **, struct RBTreeNode *);
 
-/* Transplant utility function - private. */
+/* Transplant utility function. Used for inserts/deletes */
 void transplant(struct RBTreeNode **, struct RBTreeNode *, struct RBTreeNode *);
 
 /****** ACCESSOR FUNCTIONS ******/

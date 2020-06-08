@@ -4,7 +4,7 @@ An implementation of the Red-Black Tree data structure in C. The interface
 is designed to be simple to use and generic with the use of a `void *` field
 for satellite data. Keys, at the moment, are assumed to be integers. Thus,
 the data structure can be used to store a collection of `int`s or as a map for
-more complicated data index by integers. 
+more complicated data index by integers.
 
 #  Background
 
@@ -198,6 +198,8 @@ Accepted commands and their formats:
 - [ ] Further modularization. Thinking of packaging everything into a
 `struct` that manages the root pointer and maintains fields like the
 size of the tree.
+
+- [ ] Support for some type of iterator. 
 
 - [ ] A more robust memory management. I want to allow users to have
 the option to substitute their own memory management.
