@@ -1,0 +1,76 @@
+\documentclass[10pt]{article}
+
+\usepackage[margin=1in]{geometry}
+\PassOptionsToPackage{hyphens}{url}\usepackage{hyperref}
+\usepackage{enumitem}
+\usepackage{multicol}
+\usepackage{color}
+\usepackage{fancyvrb}
+\usepackage{textpos}
+\usepackage[font=small,labelfont=bf]{caption}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{lastpage}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\usepackage{setspace}
+\usepackage{etoolbox}
+\usepackage{mathrsfs}
+\AtBeginEnvironment{quote}{\singlespacing\small}
+%\usepackage{pxfonts}
+%\usepackage{lmodern}
+%\usepackage{txfonts}
+%\usepackage{newtxmath}
+\usepackage{newtxtext}
+%\usepackage{newpxtext}
+\usepackage{multirow}
+
+\usepackage{listings}
+\lstset{%
+    language=C,
+    basicstyle=\ttfamily,
+    keywordstyle=\bfseries,
+    showstringspaces=false,
+    morekeywords={for, if, do, then},
+    mathescape
+}%
+
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+\usetikzlibrary{automata}
+\tikzset{>=stealth}
+
+\newenvironment{myitemize}{\begin{itemize}\setlength\itemsep{1em}}{\end{itemize}}
+
+\newenvironment{myenum}{\begin{enumerate}\setlength\itemsep{1em}}{\end{enumerate}}
+
+\newcommand{\mh}[1]{\textcolor{magenta}{\textbf{#1}}}
+
+\newcommand{\rh}[1]{\textcolor{red}{\textbf{#1}}}
+
+\newcommand{\gh}[1]{\textcolor{green}{\textbf{#1}}}
+
+\newcommand{\ch}[1]{$\mathtt{#1}$}
+
+\newcommand{\uu}[1]{\underline{\underline{#1}}}
+
+
+\setlength{\textheight}{9.5 in}
+\setlength{\textwidth}{6.75 in}
+\setlength{\oddsidemargin}{-0.125 in}
+\setlength{\evensidemargin}{-0.125 in}
+\setlength{\topmargin}{-1.0 in}
+\setlength{\parskip}{3pt}
+
+\pagestyle{fancy}
+
+
+
+\begin{document}
+
+\fancyhf{}
+\cfoot{Page \thepage\ of \pageref{LastPage}}
+
+\section{Introduction}
+
+\end{document}

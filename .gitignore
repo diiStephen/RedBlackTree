@@ -1,6 +1,10 @@
 *.[ao]
 *.h~
 *.c~
+*.aux
+*.log
+*.out
+*.pdf
 makefile~
 build/rbtree.so
 build/test-engine
