@@ -199,4 +199,35 @@ given by the following lemma.
 
 \end{proof}
 
+\subsection{Implementation of RBT Nodes in \texttt{C}}
+We first define an \texttt{enumeration} type for colors.
+
+\begin{lstlisting}
+// Colorings for nodes.
+enum color {
+  	    RED,
+  	    BLACK
+};
+
+typedef enum color color_t;
+\end{lstlisting}
+
+We use the following \texttt{struct} to represent RBT tree nodes.
+The comments explain the meaning of each of the fields. Note, some additional
+fields have been included for the sake of implementation.
+
+\begin{lstlisting}
+struct RBTreeNode {
+
+  struct RBTreeNode *parent; /* Pointer to parent node.      */
+  struct RBTreeNode *left;   /* Pointer to left child node.  */
+  struct RBTreeNode *right;  /* Pointer to right child node. */
+
+  int key;                   /* int key used for ordering data. */
+  void *data;                /* void pointer to satellite data.  */
+  color_t c;                 /* Current color (red/black) of the node. */
+  bool isSen;                /* Is this node the sentinel? */
+};
+\end{lstlisting}
+
 \end{document}
