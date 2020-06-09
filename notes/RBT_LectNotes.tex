@@ -81,6 +81,90 @@
 
 \section{Introduction and Background}
 
-We first recall some basic definitions from the theory of data structures.
+Let $S$ be a data structure, then we say that $S$ contains a collection
+of $nodes$ and supports a set of $operations$ defined on the nodes of the
+structure.
+
+Let $x$ be a node, then we assume that $x$ contains a field, $x.k$
+representing the key associated to that node, and may also include further
+fields as necessary (i.e. satellite data). Keys must be from a totally
+ordered universe, and are not necessarily unique.
+
+\begin{definition}
+A \textbf{dynamic set} data structure, $S$, supports the following operations:
+\begin{enumerate}
+    \setlength\itemsep{1em}
+    \item $search(S, k)$. Search for an return a pointer to a node in $S$ with
+      key $k$, or report that no such node exists.
+    \item $insert(S, k)$. Add a new node to $S$ with key $k$.
+    \item $delete(S, k)$. Remove a node in $S$ with key $k$, if possible.
+    \item $minimum(S, k)$. Find and return a pointer to a node in $S$
+      with minimal key value.
+    \item $maximum(S,k)$. Find and return a pointer to a node in $S$ with
+      maximal key value.
+    \item $predecessor(S, k)$. Find a return a pointer to a node in $S$ with
+      key that is the greatest value less than $k$.
+    \item $successor(S, k)$. Find a return a pointer to a node in $S$ with
+      key that is the least value greater than $k$.
+\end{enumerate}
+\end{definition}
+
+\begin{definition}
+  A \textbf{dictionary} is a data structure that supports the dynamic set
+  operations of $search$, $insert$, and $delete$.
+\end{definition}
+
+One fundamental example of a data structure that supports all of the
+operations of a dynamic set is the \textbf{binary search tree} (BST). We will
+not review the details of this structure here, but only note a few important
+facts.
+
+Let $T$ be a BST, and let $h = height(T)$. Then, the dynamic set operations
+all run in time $O(h)$. We thus want $h$ to be as small as possible as a
+function of the number of nodes, $n$, of the tree.
+
+What can go wrong? In the worst case, the height of a BST may be $n$, i.e. a
+single chain of nodes resembling a linked list. Therefore, in the worst case,
+the dictionary operations may take $O(n)$ time. Indeed, no better than a linked list.
+
+There have been many variants of the basic BST data structure that aims
+to ensure that $T$ is \textbf{balanced} in the sense that no one path is
+much longer than any other. Different trees support different balancing schemes,
+e.g. AVL trees, 2-3 trees, and so on. We will focus on the \textbf{red-black}
+tree.
+
+\section{Red-Black Trees}
+
+A red-black tree is fundamentally a binary search tree with
+some additional structure: a dichromatic coloring scheme, and some further
+restrictions.
+
+The nodes of a red-black tree will contain
+the following fields:
+\begin{itemize}
+  \item $k$, the key of the node.
+  \item $left$, a pointer to the left child of the node.
+  \item $right$, a pointer to the right child of the node.
+  \item $parent$, a pointer to the node's parent.
+  \item $color$, the color of the node.
+\end{itemize}
+
+Let $T$ be a tree (or, indeed, any graph), then $T(V)$ is the set of nodes
+of the tree and $T(E)$ is the set of edges.
+
+\begin{definition}
+  A \textbf{red-black tree} is a BST, $T$, that satisfies the following additional
+  properties:
+  \begin{enumerate}[label=\Roman*.]
+    \item $\forall v \in T(V) \; v.color \in \{\texttt{RED}, \texttt{BLACK}\}$,
+    \item $T.root.color = \texttt{BLACK}$,
+    \item Every leaf node is colored \texttt{BLACK}.
+    \item $\forall v \in T(V)$ if $v.color = \texttt{RED}$,
+      then $v.left.color = v.right.color = \texttt{BLACK}$.
+    \item $\forall v \in T(V)$ all simple paths from $v$ to descedant leaves
+      contain the same number of black nodes.
+  \end{enumerate}
+\end{definition}
+Properties $I,\ldots, V$ are refered to as RB-I,...,RB-V below. 
 
 \end{document}
