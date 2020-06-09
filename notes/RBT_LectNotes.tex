@@ -10,6 +10,7 @@
 \usepackage[font=small,labelfont=bf]{caption}
 \usepackage{amsmath}
 \usepackage{amssymb}
+\usepackage{amsthm}
 \usepackage{lastpage}
 \usepackage{fancyhdr}
 \pagestyle{fancy}
@@ -153,18 +154,37 @@ Let $T$ be a tree (or, indeed, any graph), then $T(V)$ is the set of nodes
 of the tree and $T(E)$ is the set of edges.
 
 \begin{definition}
-  A \textbf{red-black tree} is a BST, $T$, that satisfies the following additional
+  A \textbf{red-black tree} (RBT) is a BST, $T$, that satisfies the following additional
   properties:
   \begin{enumerate}[label=\Roman*.]
     \item $\forall v \in T(V) \; v.color \in \{\texttt{RED}, \texttt{BLACK}\}$,
     \item $T.root.color = \texttt{BLACK}$,
-    \item Every leaf node is colored \texttt{BLACK}.
+    \item Every leaf node is colored \texttt{BLACK},
     \item $\forall v \in T(V)$ if $v.color = \texttt{RED}$,
-      then $v.left.color = v.right.color = \texttt{BLACK}$.
+      then $v.left.color = v.right.color = \texttt{BLACK}$,
     \item $\forall v \in T(V)$ all simple paths from $v$ to descedant leaves
       contain the same number of black nodes.
   \end{enumerate}
 \end{definition}
-Properties $I,\ldots, V$ are refered to as RB-I,...,RB-V below. 
+
+Properties $I,\ldots, V$ are refered to as RB-I,...,RB-V below.
+
+\begin{definition}
+  Let $T$ be an RBT and suppose $v \in T(V)$. The \emph{black-height} of
+  $v$ is given by:
+    \[ bh(v) := \#\text{black nodes on any simple path from x down to a leaf,
+      excluding v itself.} \]
+  Additionally, $bh(T) := bh(T.root)$, the black-height of the root node.
+\end{definition}
+
+\begin{claim}
+  Let $T$ be an RBT and $v \in T(V)$, then $bh(v)$ is \emph{well-defined}.
+\end{claim}
+
+\begin{proof}
+  By RB-V, all paths from $v$ to any descendant leaves
+  have the same number of black nodes.
+  Thus $bh : T(V) \rightarrow \mathbb{N}$ is indeed a well-defined function.
+\end{proof}
 
 \end{document}
